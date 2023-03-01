@@ -6,10 +6,15 @@ export const storageService = {
     remove,
 }
 
-function query(entityType, delay = 500) {
+function query(entityType) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
-    return new Promise(resolve => setTimeout(() => resolve(entities), delay))
+    return new Promise(resolve => resolve(entities))
 }
+
+// function query(entityType, delay = 500) {
+//     var entities = JSON.parse(localStorage.getItem(entityType)) || []
+//     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
+// }
 
 function get(entityType, entityId) {
     return query(entityType).then(entities => {
