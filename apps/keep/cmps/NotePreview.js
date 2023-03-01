@@ -14,7 +14,7 @@ export default {
                         :style="note.style"
                         />
                         <NoteActions :note="note" @saveNote="save" @removeNote="removeNote"/>
-
+                    
         </article>
     `,methods: {
               removeNote(noteId) {

@@ -1,9 +1,12 @@
 export default {
     props: ['info'],
     template: `
+<!-- <h2>{{info.title}}</h2> -->
 
-<textarea v-model="info.txt" @input="resize()"  ref="textarea"></textarea>
-        
+<div class="content">
+<h3>{{info.title}}</h3>
+<p ref="textarea">{{info.txt}} </p>
+</div>
     `,
     data() {
         return {
@@ -14,11 +17,7 @@ export default {
         onSave() {
             this.$emit('saveNote')
         },
-        resize() {
-            let element = this.$refs["textarea"];
-            element.style.height = "max-content";
-            element.style.height = element.scrollHeight + "px";
-        },
+
     },
   
 }

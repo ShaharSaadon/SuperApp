@@ -1,6 +1,8 @@
 /* Setup */
 @import 'setup/vars.css';
 @import 'setup/typography.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css';
+
 
 /* Base */
 @import 'base/base.css';
@@ -26,5 +28,7 @@
 /* NOTE */
 @import 'apps/note/AddNote.css';
 @import 'apps/note/NoteList.css';
+@import 'apps/note/NoteEdit.css';
 @import 'apps/note/NoteActions.css';
 @import 'apps/note/NotePreview.css';
+@import 'apps/note/NoteIndex.css';

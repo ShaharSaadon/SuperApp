@@ -1,6 +1,7 @@
 .note-list {
     columns: auto 12em;
     column-gap: 1rem;
+    
 }
 
 .note{
