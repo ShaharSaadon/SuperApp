@@ -38,9 +38,12 @@ function _createEmails() {
     if (!emails || !emails.length) {
         emails = []
         emails.push(_createEmail(loggedInUser.email, 'epic games', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
-        emails.push(_createEmail(loggedInUser.email, 'epic games', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
-        emails.push(_createEmail(loggedInUser.email, 'epic games', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
-        emails.push(_createEmail(loggedInUser.email, 'epic games', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
+        emails.push(_createEmail(loggedInUser.email, 'funny bunny', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
+        emails.push(_createEmail(loggedInUser.email, 'lolipops', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
+        emails.push(_createEmail(loggedInUser.email, 'shipping from spain', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
+        emails.push(_createEmail(loggedInUser.email, 'family pictures', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
+        emails.push(_createEmail(loggedInUser.email, 'crazy mountion shoes', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
+        emails.push(_createEmail(loggedInUser.email, 'content from president', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.','ofek@appsus.com'))
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
 }
