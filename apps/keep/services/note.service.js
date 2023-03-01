@@ -1,6 +1,6 @@
 'use strict'
 
-import {storageService} from '../../../services/async-storage.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 import { utilService } from '../../../services/util.service.js'
 
 export const noteService = {
@@ -13,20 +13,48 @@ export const noteService = {
 const NOTES_KEY = 'notesDB'
 
 const notesDB = [
-    _createNote('1'),
-    _createNote('2'),
-    _createNote('3'),
+    {
+        type: 'NoteTxt',
+        info: {
+            title: '1',
+            txt: 'Hi'
+        }
+    },
+    {
+        type: 'NoteTxt',
+        info: {
+            title: '1',
+            txt: 'Hi'
+        }
+    },
+    {
+        type: 'NoteTxt',
+        info: {
+            title: '1',
+            txt: 'Hi'
 
+        }
+    },
+    {
+        type: 'NoteImg',
+        info: {
+            title: '1',
+            url: 'img/ing.jpg'
+
+        }
+    },
 ]
 
-function getNotes(){
+_createNotes()
+
+function getNotes() {
     return Promise.resolve(notesDB)
 
 }
 
 function query(filterBy = {}) {
     return storageService.query(NOTES_KEY)
-        .then(notes => {return notes})
+        .then(notes => { return notes })
 }
 
 function get(notesId) {
@@ -45,20 +73,20 @@ function save(notes) {
     }
 }
 
-function _createNote(txt='new note'){
+function _createNote(txt = 'new note') {
     return {
         id: utilService.makeId(),
         type: 'textBox',
         info: {
             txt,
-            }
-            
+        }
+
     }
 }
 
-function _createNotes(){
+function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY)
-    if(!notes || notes.length) {
+    if (!notes || notes.length) {
         notes = notesDB
         utilService.saveToStorage(NOTES_KEY, notes)
     }
