@@ -1,0 +1,12 @@
+.email-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* .email-preview p {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}  */
