@@ -32,7 +32,7 @@ export default {
                 })
         },
         saveNote(noteId) {
-            noteService.save(noteId)
+            noteService.save(noteId).then()
         },
 
     },

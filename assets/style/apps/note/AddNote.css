@@ -1,0 +1,43 @@
+.add-note {
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+
+}
+
+.note-inputs {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.39);
+    box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.39);
+
+}
+
+.note-inputs textarea {
+    border: 0;
+    font-family: roboto;
+    width: 40vw;
+    max-width: 400px;
+    min-width: 250px;
+}
+
+.note-input-title {
+    height: 1.25rem;
+    
+}
+
+.note-input-txt {
+    line-height: 2rem;
+    height: max-content
+}
+
+.note-actions {
+height: 32px;
+background-color: black;
+}
+
+.note-actions button{
+    
+}

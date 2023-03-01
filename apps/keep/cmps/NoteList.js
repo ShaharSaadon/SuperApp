@@ -6,16 +6,9 @@ export default {
     template: `
         <section class="note-list">
         <div v-for="(note,idx) in notes" class="note">
-                    <component 
-                        :is="note.type"  
-                        :info="note.info" 
-                        @onSetNote="setNote($event,idx)"
-                        @saveNote="save(note)"
-                        :style="note.style"
-                        />
-
-                        <button @click="remove(note.id)">x</button>
-
+                <NotePreview :note="note"
+                @removeNote="remove" />
+                
                 </div>
         </section>
 
