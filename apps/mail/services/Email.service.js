@@ -48,6 +48,7 @@ function _createEmail(from , to, subject, body) {
     email.id = utilService.makeId()
     email.subject = subject
     email.body = body
+    email.sentAt = (new Date()).getMonth
     return email
 }
 

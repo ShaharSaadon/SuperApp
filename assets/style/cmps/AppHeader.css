@@ -1,4 +1,7 @@
 .app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--clr5);
   color: var(--secondary-clr1);
   padding: 1em;

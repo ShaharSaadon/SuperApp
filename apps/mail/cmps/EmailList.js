@@ -23,6 +23,13 @@ created() {},
   data() {
     return {}
   },
-  methods: {},
+  methods: {
+    remove(emailId) {
+        this.$emit('remove', emailId)
+    },
+    showDetails(emailId){
+        this.$emit('show-details', emailId)
+    },
+  },
   computed: {},
 }

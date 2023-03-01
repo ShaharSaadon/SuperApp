@@ -7,7 +7,8 @@ export default {
   template: `
         <section class="mail-index">
           <EmailList 
-            :emails="emails"/>
+            :emails="emails"
+            @remove="removeEmail"/>
             <h1>Mail</h1>
         </section>
         `,
@@ -24,6 +25,15 @@ export default {
       emails:[],
     }
   },
-  methods: {},
+  methods: {
+    removeEmail(emailId) {
+      EmailService.remove(emailId)
+        .then(()=> {
+          const idx = this.emails.findIndex(email => email.id === emailId)
+          this.emails.splice(idx, 1)
+        }
+        )
+    }
+  },
   computed: {},
 }
