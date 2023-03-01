@@ -2,9 +2,7 @@ export default {
     props: ['info'],
     template: `
 
-
-
-    <input type="text" v-model="this.info.txt" @input="onSave"> 
+<textarea v-model="info.txt" @input="resize()"  ref="textarea"></textarea>
         
     `,
     data() {
@@ -16,9 +14,12 @@ export default {
         onSave() {
             this.$emit('saveNote')
         },
+        resize() {
+            let element = this.$refs["textarea"];
+            element.style.height = "max-content";
+            element.style.height = element.scrollHeight + "px";
+        },
     },
-    computed:{
-
-    }
+  
 }
 

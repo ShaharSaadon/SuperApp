@@ -9,9 +9,14 @@ export default {
     name: 'Note Index',
 	template: `
     
-        <AddNote @addNote="updateNotes"/>
-        <NoteList 
-        :notes="notes"
+        <AddNote @addNote="saveNote"/>
+        <NoteList
+        :notes="pinnedNotes"
+        @remove="removeNote" 
+        @save= "saveNote"/>
+
+        <NoteList
+        :notes="unpinnedNotes"
         @remove="removeNote" 
         @save= "saveNote"/>
     `,
@@ -31,9 +36,31 @@ export default {
                     showErrorMsg('Note Removed Failed')
                 })
         },
-        saveNote(noteId) {
-            noteService.save(noteId).then()
+        saveNote(note) {
+            noteService.save(note)
+            .then(savedNote => {
+                console.log('savedNote=',savedNote)
+            })
+            .then(()=>{
+                noteService.query()
+                .then(notes=>this.notes=notes)
+            })
         },
+
+    },
+    computed: {
+        pinnedNotes(){
+            
+            return this.filteredNotes.filter(note => note.isPinned)
+        },
+        unpinnedNotes(){
+            return this.filteredNotes.filter(note => !note.isPinned)
+
+        },
+        filteredNotes(){
+            if(!this.notes) return []
+            return this.notes
+        }
 
     },
     created() {

@@ -1,0 +1,21 @@
+.note-actions {
+    height: 32px;
+    justify-content: space-between;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    position: absolute;
+    background-color: inherit;
+    bottom: 0;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.note-actions button {
+        height: 70%;
+        background-color: inherit;
+
+}
+
+        

@@ -11,15 +11,20 @@
 /* General Components */
 @import 'cmps/HomePage.css';
 @import 'cmps/AppHeader.css';
+@import 'cmps/AppFooter.css';
 @import 'cmps/UserMsg.css';
 
 /* Apps */
 /* EMAIL */
 @import 'apps/mail/EmailIndex.css';
+
 /* CMPS */
 @import 'apps/mail/cmps/EmailList.css';
 @import 'apps/mail/cmps/EmailPreview.css';
-/* NOTE */
 
+
+/* NOTE */
 @import 'apps/note/AddNote.css';
 @import 'apps/note/NoteList.css';
+@import 'apps/note/NoteActions.css';
+@import 'apps/note/NotePreview.css';
