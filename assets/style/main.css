@@ -21,3 +21,5 @@
 
 /* NOTE */
 @import 'apps/note/NoteIndex.css';
+@import '/assets/style/cmps/NoteList.css';
+@import '/assets/style/cmps/NoteTxt.css';

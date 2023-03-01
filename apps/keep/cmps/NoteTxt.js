@@ -1,18 +1,24 @@
 export default {
     props: ['info'],
     template: `
-        <section>
 
-            <input type="text" value="info.txt"> 
-        </section>
+
+
+    <input type="text" v-model="this.info.txt" @input="onSave"> 
+        
     `,
     data() {
         return {
-
+            txt: this.info.txt
         }
     },
     methods: {
-
+        onSave() {
+            this.$emit('saveNote')
+        },
     },
+    computed:{
+
+    }
 }
 

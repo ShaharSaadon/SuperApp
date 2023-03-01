@@ -8,49 +8,52 @@ export const noteService = {
     get,
     remove,
     save,
-    getNotes,
+    
 }
 const NOTES_KEY = 'notesDB'
 
 const notesDB = [
     {
+        id: 'n100',
+        createdAt: 111111,
+        isPinned: true,
         type: 'NoteTxt',
+        style: {
+            backgroundColor: '#00d'
+        },            
         info: {
-            title: '1',
+            title: '12',
             txt: 'Hi'
         }
     },
     {
+        id: 'n101',
         type: 'NoteTxt',
         info: {
-            title: '1',
-            txt: 'Hi'
+            title: '1aaaa',
+            txt: 'Hai'
         }
     },
     {
+        id: 'n102',
         type: 'NoteTxt',
         info: {
-            title: '1',
+            title: '1t3',
             txt: 'Hi'
 
         }
     },
-    {
-        type: 'NoteImg',
-        info: {
-            title: '1',
-            url: 'img/ing.jpg'
+    // {
+    //     type: 'NoteImg',
+    //     info: {
+    //         title: '1',
+    //         url: 'img/ing.jpg'
 
-        }
-    },
+    //     }
+    // },
 ]
 
 _createNotes()
-
-function getNotes() {
-    return Promise.resolve(notesDB)
-
-}
 
 function query(filterBy = {}) {
     return storageService.query(NOTES_KEY)
@@ -65,11 +68,11 @@ function remove(notesId) {
     return storageService.remove(NOTES_KEY, notesId)
 }
 
-function save(notes) {
-    if (notes.id) {
-        return storageService.put(NOTES_KEY, notes)
+function save(note) {
+    if (note.id) {
+        return storageService.put(NOTES_KEY, note)
     } else {
-        return storageService.post(NOTES_KEY, notes)
+        return storageService.post(NOTES_KEY, note)
     }
 }
 
@@ -86,7 +89,7 @@ function _createNote(txt = 'new note') {
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY)
-    if (!notes || notes.length) {
+    if (!notes || notes.length===0) {
         notes = notesDB
         utilService.saveToStorage(NOTES_KEY, notes)
     }
@@ -99,45 +102,3 @@ function _createNotes() {
 
 
 
-
-
-
-
-// const notes = [
-//     {
-//         id: 'n101',
-//         createdAt: 1112222,
-//         type: 'NoteTxt',
-//         isPinned: true,
-//         style: {
-//             backgroundColor: '#00d'
-//         },
-//         info: {
-//             txt: 'Fullstack Me Baby!'
-//         }
-//     },
-//     {
-//         id: 'n102',
-//         type: 'NoteImg',
-//         isPinned: false,
-//         info: {
-//             url: 'http://some-img/me',
-//             title: 'Bobi and Me'
-//         },
-//         style: {
-//             backgroundColor: '#00d'
-//         }
-//     },
-//     {
-//         id: 'n103',
-//         type: 'NoteTodos',
-//         isPinned: false,
-//         info: {
-//             title: 'Get my stuff together',
-//             todos: [
-//                 { txt: 'Driving license', doneAt: null },
-//                 { txt: 'Coding power', doneAt: 187111111 }
-//             ]
-//         }
-//     }
-// ]
