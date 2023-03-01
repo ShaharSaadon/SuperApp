@@ -8,6 +8,7 @@ export const noteService = {
     get,
     remove,
     save,
+    getNewNote,
     
 }
 const NOTES_KEY = 'notesDB'
@@ -22,25 +23,34 @@ const notesDB = [
             backgroundColor: '#00d'
         },            
         info: {
-            title: '12',
-            txt: 'Hi'
+            title: '11',
+            txt: 'hi'
         }
     },
     {
         id: 'n101',
+        createdAt: 22222,
+        isPinned: true,
         type: 'NoteTxt',
+        style: {
+            backgroundColor: '#00d'
+        },            
         info: {
-            title: '1aaaa',
-            txt: 'Hai'
+            title: '22',
+            txt: 'bye'
         }
     },
     {
-        id: 'n102',
+        id: 'n100',
+        createdAt: 111111,
+        isPinned: true,
         type: 'NoteTxt',
+        style: {
+            backgroundColor: '#00d'
+        },            
         info: {
-            title: '1t3',
-            txt: 'Hi'
-
+            title: '33',
+            txt: 'good'
         }
     },
     // {
@@ -76,12 +86,21 @@ function save(note) {
     }
 }
 
+function getNewNote(){
+    return _createNote()
+}
+
 function _createNote(txt = 'new note') {
     return {
-        id: utilService.makeId(),
-        type: 'textBox',
+        createdAt: Date.now(),
+        isPinned: true,
+        type: 'NoteTxt',
+        style: {
+            backgroundColor: '#ffffff'
+        },            
         info: {
-            txt,
+            title: '',
+            txt: ''
         }
 
     }

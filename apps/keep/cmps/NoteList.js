@@ -5,13 +5,14 @@ export default {
     props: ['notes'],
     template: `
         <section class="note-list">
-        <div v-for="(note,idx) in notes" :class="note">
+        <div v-for="(note,idx) in notes" class="note">
                     <component 
                         :is="note.type"  
                         :info="note.info" 
                         @onSetNote="setNote($event,idx)"
                         @saveNote="save(note)"
-                        @click="editNote(note.id)" />
+                        :style="note.style"
+                        />
 
                         <button @click="remove(note.id)">x</button>
 
