@@ -21,11 +21,13 @@ export default {
   created() { },
   data() {
     return {
-      filterBy: { subject: '', isRead: false },
+      filterBy: { subject: '', isRead: null },
     }
   },
   methods: {
     filter() {
+      this.filterBy.isRead = !this.filterBy.isRead
+      console.log('this.filterBy',this.filterBy)
       this.$emit('filter', this.filterBy)
     },
   },

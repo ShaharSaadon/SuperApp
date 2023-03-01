@@ -3,7 +3,7 @@ export default {
   name: 'EmailPreview', 
   props: ['email'],
   template: `
-        <article class="email-preview" @click="showDetails">
+        <article :class="readClass" class="email-preview" @click="showDetails">
             <h3>{{email.from}}</h3>
             <p><strong>{{ email.subject }}-</strong>{{ email.body }}</p>
             <small>{{ email.sentAt }}</small>
@@ -21,5 +21,11 @@ created() {},
         this.$router.push(`/email/${this.email.id}`)
     },
   },
-  computed: {},
+  computed: {
+    readClass() {
+        return {
+            read: this.email.isRead
+        }
+    }
+  },
 }

@@ -33,7 +33,11 @@ export default {
   methods: {
       loadEmail() {
         EmailService.get(this.emailId)
-          .then(email => this.email = email)
+          .then(email => {
+            this.email = email
+            this.email.isRead = true
+            EmailService.save(this.email)
+          })
       }
   },
   computed: {

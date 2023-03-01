@@ -7,6 +7,7 @@
     outline: 1px solid rgb(214, 214, 214);
     box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
     cursor: pointer;
+    color:#202124; 
 }
 
 .email-preview:hover {
@@ -18,7 +19,8 @@
 }
 
 .read {
-    
+    background-color: rgb(242,246,252);
+    color:#a1a1a1; 
 }
 
 /* .email-preview p {

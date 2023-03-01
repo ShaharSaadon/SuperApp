@@ -8,13 +8,13 @@ export default {
   props: [],
   template: `
         <section class="mail-index">
-          <div>
-            <h2 @click="toggleComposeModal">New Email</h2>
-            <EmailCompose 
-              v-if="isCompose" 
-              @closeModal="toggleComposeModal"
-              />
+
+          <RouterLink to="/email/compose">New Email</RouterLink>
+          <div class="email-compose container">
+            <hr />
+            <RouterView />
           </div>
+          
           <EmailFilter @filter="setFilterBy" />
           <EmailList 
             :emails="filteredEmails"
@@ -56,8 +56,16 @@ export default {
   },
   computed: {
     filteredEmails() {
-      const regex = new RegExp(this.filterBy.subject, 'i')
-      return this.emails.filter(email => regex.test(email.subject))
+
+      let emails = this.emails
+      if(this.filterBy.subject) {
+        const regex = new RegExp(this.filterBy.subject, 'i')
+        emails = this.emails.filter(email => regex.test(email.subject))
+      }
+      if(this.filterBy.isRead) {
+        emails = this.emails.filter(email => email.isRead!==this.filterBy.isRead)
+      }
+      return emails
     }
   },
 }

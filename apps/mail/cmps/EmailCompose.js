@@ -6,7 +6,8 @@ export default {
   template: `
            <section class="email-compose">
             <h2>Compose an Email</h2>
-            <button @click="closeModal">X</button>
+            <RouterLink to="/email">X</RouterLink>
+            <!-- <button @click="closeModal">X</button> -->
             <form @submit.prevent="save">
                 <input type="text" v-model="email.to" placeholder="To">
                 <input type="text" v-model="email.subject" placeholder="Subject">
@@ -32,9 +33,9 @@ created() {},
                 this.$router.push('/email')
             })
     },
-    closeModal() {
-        this.$emit('closeModal')
-    }
+    // closeModal() {
+    //     this.$emit('closeModal')
+    // }
   },
   computed: {},
 }

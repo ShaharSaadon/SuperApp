@@ -53,7 +53,7 @@ function _createEmail(to, subject, body, from = '') {
     email.id = utilService.makeId()
     email.subject = subject
     email.body = body
-    email.sentAt = (new Date()).getMonth
+    email.sentAt = new Date()
     return email
 }
 
@@ -65,6 +65,7 @@ function getEmptyEmail(from = loggedInUser.email, to = '') {
         removedAt: null,
         sentAt: null,
         isRead: false,
+        isStared:false,
         body: '',
         subject: '',
     }
