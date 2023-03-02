@@ -14,6 +14,20 @@
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 1px solid transparent;
+    width: 37.5rem; /* Could be more or less, depending on screen size */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .modal-content textarea{
+    border:none;
+    overflow: hidden;
+
+  }
+
+  .modal-content .note-input-txt{
+    min-height: 4rem;
   }

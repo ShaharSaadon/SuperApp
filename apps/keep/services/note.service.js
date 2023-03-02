@@ -2,6 +2,7 @@
 
 import { storageService } from '../../../services/async-storage.service.js'
 import { utilService } from '../../../services/util.service.js'
+const NOTES_KEY = 'notesDB'
 
 export const noteService = {
     query,
@@ -9,9 +10,8 @@ export const noteService = {
     remove,
     save,
     getNewNote,
-    
+
 }
-const NOTES_KEY = 'notesDB'
 
 const notesDB = [
     {
@@ -20,8 +20,8 @@ const notesDB = [
         isPinned: true,
         type: 'NoteTxt',
         style: {
-            backgroundColor: '#00d'
-        },            
+            backgroundColor: '#404040'
+        },
         info: {
             title: '11',
             txt: 'hi'
@@ -33,8 +33,8 @@ const notesDB = [
         isPinned: true,
         type: 'NoteTxt',
         style: {
-            backgroundColor: '#00d'
-        },            
+            backgroundColor: '#404040'
+        },
         info: {
             title: '22',
             txt: 'bye'
@@ -46,13 +46,60 @@ const notesDB = [
         isPinned: true,
         type: 'NoteTxt',
         style: {
-            backgroundColor: '#00d'
-        },            
+            backgroundColor: '#404040'
+        },
         info: {
             title: '33',
             txt: 'good'
         }
     },
+    {
+        id: 'n104',
+        createdAt: 111111,
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            iUrl: 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-purim-clown-doll-mask-party-balloon-png-image_5330090.jpg',
+            title: 'PURIM',
+            txt: 'aa'
+        },
+        style: {
+            backgroundColor: '#404040'
+        }
+    },
+    {
+        id: 'n105',
+        createdAt: 111111,
+        type: 'NoteVideo',
+        isPinned: false,
+        info: {
+            vUrl: 'https://www.youtube.com/embed/7jfxcDudvS8',
+            title: 'Burnning Man',
+            txt: 'my dream'
+        },
+        style: {
+            backgroundColor: '#404040'
+        }
+    },
+    {
+        id: 'n106',
+        createdAt: 111111,
+        type: 'NoteTodos',
+        isPinned: false,
+        info: {
+            title: 'Get my stuff together',
+            todos: [
+                { txt: 'Driving license', doneAt: null },
+                { txt: 'Coding power', doneAt: 187111111 }
+            ],
+            txt: ''
+
+        },
+        style: {
+            backgroundColor: '#404040'
+        }
+    }
+
     // {
     //     type: 'NoteImg',
     //     info: {
@@ -86,7 +133,7 @@ function save(note) {
     }
 }
 
-function getNewNote(){
+function getNewNote() {
     return _createNote()
 }
 
@@ -97,7 +144,7 @@ function _createNote(txt = 'new note') {
         type: 'NoteTxt',
         style: {
             backgroundColor: '#ffffff'
-        },            
+        },
         info: {
             title: '',
             txt: ''
@@ -108,7 +155,7 @@ function _createNote(txt = 'new note') {
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY)
-    if (!notes || notes.length===0) {
+    if (!notes || notes.length === 0) {
         notes = notesDB
         utilService.saveToStorage(NOTES_KEY, notes)
     }

@@ -7,9 +7,14 @@ export default {
             <div class="note-inputs">
                 <textarea @input="resize()" ref="textarea" class="note-input-title" v-model="note.info.title" placeholder="Title"></textarea>
                 <textarea @input="resize()" ref="textarea" class="note-input-txt" v-model="note.info.txt" placeholder="Take a note..."></textarea>
-                <AddNoteActions :note="note" @addNote="save"/>
+                </div>
             </div>
-            </section>  
+            <div class="note-type">
+            <i class="fa-solid fa-font"></i>
+            <i class="fa-regular fa-image"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-solid fa-list"></i>
+            <i class="fa-solid fa-microphone"></i>
     `,
     data() {
         return {
@@ -18,7 +23,7 @@ export default {
     },
     methods: {
         save() {
-            this.$emit('addNote',this.note)
+            this.$emit('saveNote',this.note)
             this.note=noteService.getNewNote()
         },
         resize() {
