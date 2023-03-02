@@ -32,7 +32,18 @@
     min-height: 4rem;
   }
 
+  .modal-content audio{
+    margin-block-start: 1.5em;
+    margin-block-end: 1.5em;
+  }
+
  .btn-close{
   border: none;
   margin: 0;
+ }
+
+ .last-edit{
+  color:#fefefe;
+  margin-block-end: 0.7rem;
+  font-size: 80%;
  }

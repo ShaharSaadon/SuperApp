@@ -24,7 +24,11 @@ export default {
             </iframe>
 
             <img v-if="note.info.iUrl" :src="note.info.iUrl">
-                
+
+            <audio controls v-if="note.info.aUrl">
+            <source :src="note.info.aUrl" type="audio/mpeg">
+            </audio> 
+
         <textarea v-if="note" 
             :style="note.style" 
             @input="resize()" 
@@ -34,7 +38,7 @@ export default {
             placeholder="Take a note...">
         </textarea> 
 
-        {{lastEdit}}
+        <p class="last-edit" :title="note.createdAt">{{lastEdit}}</p>
 
                 <EditNoteActions 
                 v-if="note" 
@@ -53,7 +57,7 @@ export default {
     },
     methods: {
         closeModal() {
-            this.showModal=false
+            this.showModal = false
             this.$router.push(`/notes/`)
 
         },
@@ -72,23 +76,35 @@ export default {
         removeNote(noteId) {
             this.$emit('remove', noteId)
         },
-      
+
     },
-    computed:{
-        lastEdit(){
-            return this.note.lastEdit
+    computed: {
+        lastEdit() { 
+            if(!this.note.lastEdit) return
+            let date = new Date(this.note.lastEdit)
+            
+            var fullYear = date.getFullYear()
+            var month = date.getMonth() + 1
+            var day = date.getDate()
+
+            var hour = date.getHours()
+            var minutes = date.getMinutes()
+
+            var formattedTime = 'Last Edited: ' + day + '\/' + month + '\/' + fullYear
+            formattedTime += ' At: ' + hour + ':' + minutes
+            return formattedTime
         }
 
     },
     components: {
         EditNoteActions,
     },
-    created(){
-        const {noteId} = this.$route.params
+    created() {
+        const { noteId } = this.$route.params
         if (noteId) {
             noteService.get(noteId)
                 .then(note => this.note = note)
         }
     },
-    
+
 }

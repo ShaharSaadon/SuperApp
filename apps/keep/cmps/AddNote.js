@@ -59,6 +59,17 @@ export default {
                         placeholder="List item">
 
             <!-- Add Img Inputs End -->
+
+            <!-- Add Audio Inputs Start -->
+                    <input type="text" 
+                        v-if="type==='NoteAudio'"
+                        @input="resize()" 
+                        ref="textarea" 
+                        class="note-input-txt" 
+                        v-model="note.info.aUrl"
+                        placeholder="Enter Audio Url...">
+
+            <!-- Add Img Inputs End -->
             </div>
 
             
@@ -67,7 +78,7 @@ export default {
                 <i class="fa-regular fa-image" @click="type='NoteImg'"></i>
                 <i class="fa-brands fa-youtube" @click="type='NoteVideo'"></i>
                 <i class="fa-solid fa-list" @click="type='NoteTodos'"></i>
-                <i class="fa-solid fa-microphone"></i>
+                <i class="fa-solid fa-microphone" @click="type='NoteAudio'"></i>
             </div>
 
     `,

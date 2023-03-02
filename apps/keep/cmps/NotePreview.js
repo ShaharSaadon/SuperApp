@@ -3,6 +3,7 @@ import NoteTxt from "./NoteTxt.js"
 import NoteImg from "./NoteImg.js"
 import NoteVideo from "./NoteVideo.js"
 import NoteTodos from "./NoteTodos.js"
+import NoteAudio from "./NoteAudio.js"
 
 export default {
     props: ['note'],
@@ -52,6 +53,7 @@ export default {
         NoteImg,
         NoteVideo,
         NoteTodos,
+        NoteAudio,
         NoteActions,
     }
 }

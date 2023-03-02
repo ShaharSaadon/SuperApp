@@ -192,7 +192,7 @@ function _createNote(type) {
                 info: {
                     title: '',
                     todos: [
-                        { txt: 'sd', doneAt: null },
+                        { txt: '', doneAt: null },
                     ],
                     txt: ''               
                 },
@@ -200,6 +200,20 @@ function _createNote(type) {
                     backgroundColor: '#404040'
                 }
             }
+            case 'NoteAudio':
+                return {
+                     createdAt: Date.now(),
+                     type,
+                     isPinned: false,
+                     info: {
+                         aUrl: '',
+                         title: '',
+                         txt: '',
+                     },
+                     style: {
+                         backgroundColor: '#404040'
+                     }
+                 }
 
           
 

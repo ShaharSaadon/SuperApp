@@ -33,6 +33,11 @@
     height: max-content
 }
 
+.add-note input{
+    outline: none;
+    border: none;
+}
+
 .note-type{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
