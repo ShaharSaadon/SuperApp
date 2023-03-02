@@ -9,7 +9,7 @@ const loggedInUser = {
     email: 'user@appsus.com',
     fullName: 'Mahatma Appsus'
 }
-export const EmailService = {
+export const emailService = {
     query,
     get,
     remove,
@@ -53,7 +53,7 @@ function _createEmail(to, subject, body, from = '') {
     email.id = utilService.makeId()
     email.subject = subject
     email.body = body
-    email.sentAt = new Date()
+    email.sentAt = (new Date()).toDateString()
     return email
 }
 
@@ -84,7 +84,7 @@ function save(email) {
     if (email.id) {
         return storageService.put(EMAIL_KEY, email)
     } else {
-        return storageService.post(EMAIL_KEY, email)
+        return storageService.post(EMAIL_KEY, email , false)
     }
 }
 
@@ -98,14 +98,3 @@ function _setNextPrevEmailId(email) {
         return email
     })
 }
-
-// const email = {
-//     id: 'e101',
-//     subject: 'Miss you!',
-//     body: 'Would love to catch up sometimes',
-//     isRead: false,
-//     sentAt : 1551133930594,
-//     removedAt : null,
-//     from: 'momo@momo.com',
-//     to: 'user@appsus.com'
-//     }

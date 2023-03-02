@@ -8,11 +8,11 @@ export default {
         <section class="emails-list">
             <ul>
                 <li v-for="email in emails" :key="email.id">
-                    <EmailPreview :email="email"/>
-                    <!-- <RouterLink :to="'/email/'+email.id">Details</RouterLink>  -->
-                    <!-- <RouterLink :to="'/email/edit/'+email.id">Edit</RouterLink> | -->
-                    <!-- <button hidden @click="showDetails(email.id)">Details</button> -->
-                    <button @click="remove(email.id)">x</button>
+                    <EmailPreview 
+                    :email="email"
+                    @remove="remove"
+                    @toggleStar="toggleStar"/>
+                   
                 </li>
             </ul>
         </section>
@@ -29,6 +29,10 @@ created() {},
     remove(emailId) {
         this.$emit('remove', emailId)
     },
+    toggleStar(emailId) {
+        this.$emit('addStar', emailId)
+
+    }
   },
   computed: {},
 }

@@ -1,4 +1,4 @@
-import { EmailService } from "../services/Email.service.js"
+import { emailService } from "../services/Email.service.js"
 
 export default {
   name: 'EmailDetails',
@@ -20,7 +20,7 @@ export default {
       </section>
         `,
   components: {
-    EmailService,
+    EmailService: emailService,
   },
   created() {
     this.loadEmail()
@@ -32,11 +32,11 @@ export default {
   },
   methods: {
       loadEmail() {
-        EmailService.get(this.emailId)
+        emailService.get(this.emailId)
           .then(email => {
             this.email = email
             this.email.isRead = true
-            EmailService.save(this.email)
+            emailService.save(this.email)
           })
       }
   },

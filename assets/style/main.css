@@ -16,10 +16,13 @@
 /* Apps */
 /* EMAIL */
 @import 'apps/mail/EmailIndex.css';
+
 /* CMPS */
 @import 'apps/mail/cmps/EmailList.css';
 @import 'apps/mail/cmps/EmailPreview.css';
-/* NOTE */
+@import 'apps/mail/cmps/EmailSideBar.css';
 
+
+/* NOTE */
 @import 'apps/note/AddNote.css';
 @import 'apps/note/NoteList.css';

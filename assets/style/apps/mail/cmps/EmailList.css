@@ -1,3 +1,7 @@
+.emails-list {
+    width: 100%;
+}
+
 .emails-list li {
     display: flex;
     justify-content: space-between;
