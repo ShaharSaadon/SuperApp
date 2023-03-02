@@ -23,12 +23,14 @@ export default {
         @edit="editNote"
         @duplicate="duplicateNote"/>
 
-        <h4 class="others">others</h4>
+        <h4 class="others" v-if="unpinnedNotes.length">others</h4>
         <NoteList
         :notes="unpinnedNotes"
         @remove="removeNote" 
         @save= "saveNote"
-        @edit="editNote"/>
+        @edit="editNote"
+        @duplicate="duplicateNote"
+        />
 
         
     `,
