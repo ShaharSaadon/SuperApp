@@ -1,11 +1,12 @@
 export default {
     props: ['info'],
     template: `
+<!-- <h2>{{info.title}}</h2> -->
 
-
-
-    <input type="text" v-model="this.info.txt" @input="onSave"> 
-        
+<div class="content">
+<h3>{{info.title}}</h3>
+<p ref="textarea">{{info.txt}} </p>
+</div>
     `,
     data() {
         return {
@@ -16,9 +17,8 @@ export default {
         onSave() {
             this.$emit('saveNote')
         },
-    },
-    computed:{
 
-    }
+    },
+  
 }
 

@@ -2,18 +2,30 @@ import {noteService} from '../services/note.service.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 import AddNote from '../cmps/AddNote.js'
 import NoteList from '../cmps/NoteList.js'
+import NoteEdit from '../cmps/NoteEdit.js'
 
 
 
 export default {
     name: 'Note Index',
 	template: `
-    
-        <AddNote @addNote="updateNotes"/>
-        <NoteList 
-        :notes="notes"
+        <AddNote @addNote="saveNote"/>
+        <router-view></router-view>
+
+        <h4>pinned</h4>
+        <NoteList
+        :notes="pinnedNotes"
+        @remove="removeNote" 
+        @save= "saveNote"
+        @edit="editNote"/>
+
+        <h4 class="others">others</h4>
+        <NoteList
+        :notes="unpinnedNotes"
         @remove="removeNote" 
         @save= "saveNote"/>
+
+        
     `,
     data(){
         return{
@@ -31,9 +43,34 @@ export default {
                     showErrorMsg('Note Removed Failed')
                 })
         },
-        saveNote(noteId) {
-            noteService.save(noteId).then()
+        saveNote(note) {
+            noteService.save(note)
+            .then(savedNote => {
+                console.log('savedNote=',savedNote)
+            })
+            .then(()=>{
+                noteService.query()
+                .then(notes=>this.notes=notes)
+            })
         },
+        editNote(noteId){
+            this.$router.push(`/notes/editor/${noteId}`)
+        }
+
+    },
+    computed: {
+        pinnedNotes(){
+            
+            return this.filteredNotes.filter(note => note.isPinned)
+        },
+        unpinnedNotes(){
+            return this.filteredNotes.filter(note => !note.isPinned)
+
+        },
+        filteredNotes(){
+            if(!this.notes) return []
+            return this.notes
+        }
 
     },
     created() {
@@ -52,5 +89,6 @@ export default {
     components:{
         NoteList,
         AddNote,
+        NoteEdit,
     }
 }

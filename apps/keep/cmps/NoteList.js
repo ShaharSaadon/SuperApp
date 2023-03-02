@@ -1,5 +1,6 @@
 import NotePreview from './NotePreview.js'
 import NoteTxt from './NoteTxt.js'
+import NoteEdit from './NoteEdit.js'
 
 export default {
     props: ['notes'],
@@ -7,9 +8,12 @@ export default {
         <section class="note-list">
         <div v-for="(note,idx) in notes" class="note">
                 <NotePreview :note="note"
-                @removeNote="remove" />
-                
+                @removeNote="remove"
+                @save="save"
+                @click="edit(note.id)" />
+
                 </div>
+
         </section>
 
        
@@ -20,17 +24,18 @@ export default {
             this.$emit('remove', noteId)
         },
         save(note) {
-            console.log(note)
             this.$emit('save', note)
         },
-        editNote(noteId) {
-            this.$router.push('/books' + noteId)
-
+        edit(noteId) {
+            this.$emit('edit',noteId)
         },
+      
       
     },
     components: {
         NotePreview,
         NoteTxt,
-    }
+    },
+
+    
 }

@@ -1,0 +1,16 @@
+.note-preview .content{
+    height:max-content;
+    width: 100%;
+    border-radius: 5px; 
+    padding: 2px;
+    resize: none;
+    overflow: hidden;
+    padding: 0 0 2rem 0;
+    color:black;
+    margin-block-end: 1rem;
+}
+
+
+.note-preview{
+    position: relative;
+}

@@ -1,20 +1,9 @@
 .note-list {
     columns: auto 12em;
+    column-gap: 1rem;
+    
 }
 
-.note-preview input{
-    height: 150px;
+.note{
+    height: max-content;
 }
-/* 
-.note-list ul li{
-    padding: 10px;
-    background-color: whitesmoke;
-    min-height: 160px;
-    border: 2px solid black;
-    text-align: center;
-}
-
-.note-list ul li img{
-    width:65%;
-    margin: 1rem;
-} */
