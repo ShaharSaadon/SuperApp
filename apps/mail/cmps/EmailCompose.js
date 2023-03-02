@@ -8,7 +8,7 @@ export default {
            <section class="email-compose">
             <div class="compose-nav">
               <h4>New Email</h4>
-              <RouterLink @click="takeToDraft" class="exit-btn" to="/email">X</RouterLink>
+              <RouterLink @click="saveToDraft" class="exit-btn" to="/email">X</RouterLink>
             </div>
             <!-- <button @click="closeModal">X</button> -->
             <form @submit.prevent="save">
@@ -39,6 +39,11 @@ created() {},
       eventBus.emit('sent', {...this.email})
       this.$router.push('/email')
     },
+    saveToDraft() {
+      this.email.sentAt = (new Date()).toDateString()
+      this.email.isDraft = true
+      eventBus.emit('sent', {...this.email})
+    }
   },
   computed: {},
 }

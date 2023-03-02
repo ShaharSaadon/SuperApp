@@ -16,7 +16,10 @@ export default {
           <!-- </div> -->
           <RouterView @updateEmails="updateEmails"/>
           <div class="flex">
-            <EmailSideBar  @filter="setCriteria"/>
+            <EmailSideBar  
+            :emails="emails"
+            @filter="setCriteria"/>
+            
             <EmailList 
             :emails="filteredEmails"
             @remove="removeEmail"
@@ -47,12 +50,21 @@ export default {
   },
   methods: {
     removeEmail(emailId) {
-      emailService.remove(emailId)
-        .then(() => {
-          const idx = this.emails.findIndex(email => email.id === emailId)
-          this.emails.splice(idx, 1)
-        }
-        )
+      return emailService.get(emailId)
+        .then(email=> {
+          console.log('email',email)
+          if(!email.isTrash) {
+            email.isTrash = true
+            this.saveEmail(email)
+          } else {
+            emailService.remove(emailId)
+              .then(() => {
+                const idx = this.emails.findIndex(email => email.id === emailId)
+                this.emails.splice(idx, 1)
+              })
+            }
+            this.updateEmails()
+        })
     },
     toggleEmailStar(emailId) {
       emailService.get(emailId)
@@ -81,10 +93,11 @@ export default {
       })
     },
     updateEmails() {
-      emailService.query(emails => {
-        console.log('emails',emails)
+      emailService.query()
+        .then(emails => {
+        // console.log('emails',emails)
         this.emails = emails
-      } )
+      })
     }
   },
   computed: {
@@ -95,7 +108,11 @@ export default {
       }
       if(this.criteria.status) {
         if(this.criteria.status==='inbox') {
-          emails = this.emails.filter(email => email.to===emailService.loggedInUser.email)
+          emails = this.emails.filter(email => {
+             email.to===emailService.loggedInUser.email &&
+             !email.isTrash &&
+             !email.isDraft
+            })
         }
         if(this.criteria.status==='sent') {
           emails = this.emails.filter(email => email.from===emailService.loggedInUser.email)

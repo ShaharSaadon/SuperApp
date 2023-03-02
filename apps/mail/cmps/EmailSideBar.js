@@ -3,13 +3,15 @@ import EmailFolderList from "./EmailFolderList.js"
 
 export default {
   name: 'EmailSideBar', 
-  props: [],
+  props: ['emails'],
   template: `
              <section class="email-sideBar flex flex-column">
-              
+
                 <RouterLink class="email-compose-link flex justify-center align-center"
                 to="/email/compose">Compose</RouterLink>
-                <EmailFolderList @filter="filterByFolders"/>
+                <EmailFolderList 
+                :emails="emails"
+                @filter="filterByFolders"/>
 
             </section>
         `,

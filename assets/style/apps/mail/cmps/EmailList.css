@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.emails-list ul {
+    padding: 0;
+}
+
 .emails-list li {
     display: flex;
     justify-content: space-between;
