@@ -1,35 +1,41 @@
-import {noteService} from '../services/note.service.js'
+import { noteService } from '../services/note.service.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 import AddNote from '../cmps/AddNote.js'
 import NoteList from '../cmps/NoteList.js'
 import NoteEdit from '../cmps/NoteEdit.js'
+import NoteFilter from '../cmps/NoteFilter.js'
+import { utilService } from '../../../services/util.service.js'
 
 
 
 export default {
     name: 'Note Index',
-	template: `
-        <AddNote @addNote="saveNote"/>
-        <router-view></router-view>
+    template: `
+        <AddNote @saveNote="saveNote"/>
+        <NoteFilter @filter="setFilterBy"/>
+        <router-view @save="saveNote"></router-view>
 
-        <h4>pinned</h4>
+        <h4 v-if="pinnedNotes.length">pinned</h4>
         <NoteList
         :notes="pinnedNotes"
         @remove="removeNote" 
         @save= "saveNote"
-        @edit="editNote"/>
+        @edit="editNote"
+        @duplicate="duplicateNote"/>
 
         <h4 class="others">others</h4>
         <NoteList
         :notes="unpinnedNotes"
         @remove="removeNote" 
-        @save= "saveNote"/>
+        @save= "saveNote"
+        @edit="editNote"/>
 
         
     `,
-    data(){
-        return{
+    data() {
+        return {
             notes: null,
+            filterBy: '',
         }
     },
     methods: {
@@ -45,31 +51,49 @@ export default {
         },
         saveNote(note) {
             noteService.save(note)
-            .then(savedNote => {
-                console.log('savedNote=',savedNote)
-            })
-            .then(()=>{
-                noteService.query()
-                .then(notes=>this.notes=notes)
-            })
+                .then(savedNote => {
+                    console.log('savedNote=', savedNote)
+                })
+                .then(() => {
+                    noteService.query()
+                        .then(notes => this.notes = notes)
+                })
         },
-        editNote(noteId){
+        editNote(noteId) {
             this.$router.push(`/notes/editor/${noteId}`)
+        },
+        setFilterBy(filterBy) {
+            this.filterBy = filterBy
+        },
+        duplicateNote(noteId){
+            let newNote 
+             noteService.get(noteId)
+             .then(res=>{
+                newNote={...res}
+                newNote.id=null
+                noteService.save(newNote)
+                    .then(() => {
+                    noteService.query()
+                        .then(notes => this.notes = notes)
+                })
+         
+            })
         }
 
     },
     computed: {
-        pinnedNotes(){
-            
+        pinnedNotes() {
+
             return this.filteredNotes.filter(note => note.isPinned)
         },
-        unpinnedNotes(){
+        unpinnedNotes() {
             return this.filteredNotes.filter(note => !note.isPinned)
 
         },
-        filteredNotes(){
-            if(!this.notes) return []
+        filteredNotes() {
+            if (!this.notes) return []
             return this.notes
+            // .filter(note=> note.info.txt.includes(this.filterBy) || note.info.title.includes(this.filterBy))
         }
 
     },
@@ -80,15 +104,16 @@ export default {
                 this.notes = notes
             })
 
-    },  mounted() {
+    }, mounted() {
         noteService.query()
             .then(notes => {
                 this.notes = notes
             })
     },
-    components:{
+    components: {
         NoteList,
         AddNote,
         NoteEdit,
+        NoteFilter
     }
 }

@@ -1,18 +1,17 @@
 import { noteService } from "../services/note.service.js"
+import EditNoteActions from "../cmps/EditNoteActions.js"
 
 
 export default {
     template: `
-    <pre>
-    <!-- {{note}} -->
-    </pre>
+
     <section class="edit-note modal" v-bind:style="{ display: showModal ? 'block' : 'none' }">
-            <div class="note-inputs modal-content" >
-                 <textarea v-if="note" @input="resize()" ref="textarea" class="note-input-title" v-model="note.info.title" placeholder="Title"></textarea>
-                <textarea v-if="note" @input="resize()" ref="textarea" class="note-input-txt" v-model="note.info.txt" placeholder="Take a note..."></textarea> -->
-                hello mi amor
-                <button @click="closeModal">x</button>
-                <!-- <AddNoteActions :note="note" @addNote="save"/> -->
+            <div class="note-inputs modal-content" v-if="note" :style="note.style"  >
+                <textarea v-if="note" :style="note.style" @input="resize()" ref="textarea" class="note-input-title" v-model="note.info.title" placeholder="Title"></textarea>
+                <iframe v-if="note.info.vUrl":src="note.info.vUrl" height="200" width="100%" title="Iframe Example"></iframe>
+                <img v-if="note.info.iUrl" :src="note.info.iUrl">
+                <textarea v-if="note" :style="note.style" @input="resize()" ref="textarea" class="note-input-txt" v-model="note.info.txt" placeholder="Take a note..."></textarea> 
+                <EditNoteActions v-if="note" :note="note" @saveNote="save"/>
             </div>
             </section>  
     `,
@@ -28,22 +27,18 @@ export default {
             this.$router.push(`/notes/`)
 
         },
-        save() {
-        },
         resize() {
             let element = this.$refs["textarea"];
             element.style.height = "18px";
             element.style.height = element.scrollHeight + "px";
         },
+        save(note) {
+            this.$emit('save', note)
+        },
       
     },
     components: {
-    
-    },
-    computed: {
-        noteId  () {
-            return this.$route.params.carId
-        }
+        EditNoteActions,
     },
     created(){
         const {noteId} = this.$route.params

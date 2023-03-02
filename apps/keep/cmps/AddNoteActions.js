@@ -4,7 +4,7 @@ export default {
             <div class="add-note-actions">
                 <input type="color" v-model ="note.style.backgroundColor" class="btn btn-color">    
                 <input type="checkbox" v-model="note.isPinned" class="btn btn-pin">  
-                <button @click="addNote(note)">add</button>
+                <button @click="saveNote(note)">add</button>
   
             </div> 
     `,
@@ -13,8 +13,8 @@ export default {
         }
     },
     methods: {
-        addNote(note) {
-                this.$emit('addNote', note)
+        saveNote(note) {
+                this.$emit('saveNote', note)
         },
     },
     computed: {
