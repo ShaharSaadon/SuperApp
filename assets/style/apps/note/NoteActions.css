@@ -1,21 +1,30 @@
-.note-actions {
-    height: 32px;
-    justify-content: space-between;
-    padding: 0 0.5rem 0.5rem 0.5rem;
-    position: absolute;
-    background-color: inherit;
-    bottom: 0;
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
+    .note-actions {
+        display: grid;
+        height: 32px;
+        justify-content: space-between;
+        padding: 0 0.5rem 0.5rem 0.5rem;
+        position: absolute;
+        bottom: 0;
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
 
-.note-actions button {
+    .note-actions button {
         height: 70%;
         background-color: inherit;
 
-}
+    }
 
-        
+    .note-actions input[type="color"] {
+        opacity: 0;
+        width: 0.1px;
+        height: 0.1px;
+        display: hidden;
+        position: absolute;
+    }
+
+    i:hover{
+        cursor: pointer;
+    }

@@ -5,13 +5,11 @@ export default {
 <div class="note-content">
 
 <h3>{{info.title}}</h3>
-<p>active</p>
             <ul>
                 <li v-for="todo in active" @click="toggle($event,todo)">
                     {{todo.txt}}
                 </li>
             </ul>
-<p>done</p>
 
             <ul>
                 <li v-for="todo in done" @click="toggle($event,todo)" class="doneTodos">

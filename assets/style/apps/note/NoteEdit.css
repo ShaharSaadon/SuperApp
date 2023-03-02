@@ -31,3 +31,8 @@
   .modal-content .note-input-txt{
     min-height: 4rem;
   }
+
+ .btn-close{
+  border: none;
+  margin: 0;
+ }

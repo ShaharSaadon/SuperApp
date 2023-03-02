@@ -13,7 +13,19 @@ export default {
     template: `
         <AddNote @saveNote="saveNote"/>
         <NoteFilter @filter="setFilterBy"/>
-        <router-view @save="saveNote"></router-view>
+        
+        <div>
+        <button @click="filterBy.type=''">All</button>
+        <button @click="filterBy.type='NoteTxt'">Text</button>
+        <button @click="filterBy.type='NoteImg'">Image</button>
+        <button @click="filterBy.type='NoteTodos'">List</button>
+        <button @click="filterBy.type='NoteVideo'">video</button>
+        </div>
+        <router-view 
+        @save="saveNote" 
+        @duplicate="duplicateNote"
+        @remove="removeNote" >
+    </router-view>
 
         <h4 v-if="pinnedNotes.length">pinned</h4>
         <NoteList
@@ -37,7 +49,7 @@ export default {
     data() {
         return {
             notes: null,
-            filterBy: '',
+            filterBy: {txt:'',type:''}
         }
     },
     methods: {
@@ -65,9 +77,10 @@ export default {
             this.$router.push(`/notes/editor/${noteId}`)
         },
         setFilterBy(filterBy) {
-            this.filterBy = filterBy
+            this.filterBy.txt = filterBy
         },
         duplicateNote(noteId){
+            console.log(noteId)
             let newNote 
              noteService.get(noteId)
              .then(res=>{
@@ -94,8 +107,16 @@ export default {
         },
         filteredNotes() {
             if (!this.notes) return []
+            console.log(this.filterBy)
+            if(!this.filterBy.type){
             return this.notes
-            // .filter(note=> note.info.txt.includes(this.filterBy) || note.info.title.includes(this.filterBy))
+            .filter(note=> note.info.txt.includes(this.filterBy.txt) || note.info.title.includes(this.filterBy.txt))
+            } else {
+                return this.notes.filter(note=> note.info.txt.includes(this.filterBy.txt)
+                 || note.info.title.includes(this.filterBy.txt))
+                 .filter(note=>note.type===this.filterBy.type)
+
+            }
         }
 
     },

@@ -133,22 +133,79 @@ function save(note) {
     }
 }
 
-function getNewNote() {
-    return _createNote()
+function getNewNote(type) {
+    return _createNote(type)
 }
 
-function _createNote(txt = 'new note') {
-    return {
-        createdAt: Date.now(),
-        isPinned: true,
-        type: 'NoteTxt',
-        style: {
-            backgroundColor: '#ffffff'
-        },
-        info: {
-            title: '',
-            txt: ''
-        }
+function _createNote(type) {
+
+    switch (type) {
+        case 'NoteTxt':
+            return {
+                createdAt: Date.now(),
+                type,
+                isPinned: false,
+                info: {
+                    title: '',
+                    txt: ''
+                },
+                style: {
+                    backgroundColor: '#404040'
+                }
+            }
+
+        case 'NoteVideo':
+           return {
+                createdAt: Date.now(),
+                type,
+                isPinned: false,
+                info: {
+                    vUrl: '',
+                    title: '',
+                    txt: ''
+                },
+                style: {
+                    backgroundColor: '#404040'
+                }
+            }
+
+        case 'NoteImg':
+           return {
+                createdAt: Date.now(),
+                type,
+                isPinned: false,
+                info: {
+                    iUrl: '',
+                    title: '',
+                    txt: ''
+                },
+                style: {
+                    backgroundColor: '#404040'
+                }
+            }
+            
+        case 'NoteTodos':
+           return {
+                createdAt: Date.now(),
+                type,
+                isPinned: false,
+                info: {
+                    title: '',
+                    todos: [
+                        { txt: 'sd', doneAt: null },
+                    ],
+                    txt: ''               
+                },
+                style: {
+                    backgroundColor: '#404040'
+                }
+            }
+
+          
+
+
+
+
 
     }
 }
