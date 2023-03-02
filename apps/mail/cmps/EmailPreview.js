@@ -5,9 +5,9 @@ export default {
   template: `
         <article :class="readClass" class="email-preview" @click="showDetails">
 
-            <button :class="starClass" class="star-btn" @click.stop="toggleStar()"><i class="fa-sharp fa-solid fa-star"></i></button>
+            <button :class="starClass" class="star-btn" @click.stop="toggleStar"><i class="fa-sharp fa-solid fa-star"></i></button>
             <h4>{{email.from}}</h4>
-            <p class="content">
+            <p class="email-content">
               <p class="subject">{{ email.subject }}-</p>
               <p class="body">{{ email.body }}</p>
             </p>
@@ -33,7 +33,7 @@ created() {},
     toggleStar() {
         const email = {...this.email}
         email.isStared = !email.isStared
-        this.$emit('updateEmail', email)
+        this.$emit('toggleStar', email)
     }
   },
   computed: {

@@ -29,8 +29,8 @@ created() {},
     remove(emailId) {
         this.$emit('remove', emailId)
     },
-    toggleStar(emailId) {
-        this.$emit('addStar', emailId)
+    toggleStar(email) {
+        this.$emit('toggleStar', email)
 
     }
   },

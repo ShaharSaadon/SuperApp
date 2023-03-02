@@ -1,17 +1,25 @@
+import { eventBus } from "../../../services/event-bus.service.js"
 import { emailService } from "../services/Email.service.js"
 
 export default {
   name: 'EmailCompose', 
   props: [],
   template: `
-           <section class="email-compose-container">
-            <h2>Compose an Email</h2>
-            <RouterLink to="/email">X</RouterLink>
+           <section class="email-compose">
+            <div class="compose-nav">
+              <h4>New Email</h4>
+              <RouterLink @click="takeToDraft" class="exit-btn" to="/email">X</RouterLink>
+            </div>
             <!-- <button @click="closeModal">X</button> -->
             <form @submit.prevent="save">
                 <input type="text" v-model="email.to" placeholder="To">
+                <hr />
                 <input type="text" v-model="email.subject" placeholder="Subject">
-                <input type="textArea" v-model="email.body" placeholder="Body">
+                <hr />
+                <textarea 
+                v-model="email.body" 
+                placeholder="Body">
+                </textarea>
                 <button>Send</button>
             </form>
         </section>
@@ -28,12 +36,8 @@ created() {},
   methods: {
     save() {
       this.email.sentAt = (new Date()).toDateString()
-        emailService.save(this.email)
-            .then(savedEmail => {
-                this.$router.push('/email')
-                this.$emit('updateEmails')
-            })
-          
+      eventBus.emit('sent', {...this.email})
+      this.$router.push('/email')
     },
   },
   computed: {},

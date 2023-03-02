@@ -2,19 +2,13 @@ export default {
   name: 'EmailFilter',
   props: [],
   template: `
-          <section class="emails-filter">
+          <section class="search-emails-filter">
             <input 
                 v-model="filterBy.subject"
                 @input="filter"
                 placeholder="Search"
                 type="text" />
-                <label htmlFor="">
-                  Unread emails
-                  <input type="checkBox"
-                  v-model="filterBy.isRead" 
-                  @input="filter"
-                  />
-                </label>
+              <button :class="isRead">Unread Emails</button>
         </section>
         `,
   components: {},

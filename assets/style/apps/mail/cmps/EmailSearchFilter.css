@@ -1,0 +1,15 @@
+.search-emails-filter {
+    padding-inline: 50px;
+    margin-block-end: 15px;
+}
+
+.search-emails-filter [type="text"] {
+    border: none;
+    width: 70%;
+    outline: none;
+    background-color: rgba(183, 218, 231, 0.719);
+    height: 45px;
+    padding: 10px;
+    margin-block-start: 10px;
+    border-radius: 10px;
+}

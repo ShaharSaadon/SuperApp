@@ -4,23 +4,26 @@ import EmailFilter from "../cmps/EmailFilter.js"
 import EmailCompose from "../cmps/EmailCompose.js"
 import EmailDetails from "./EmailDetails.js"
 import EmailSideBar from "../cmps/EmailSideBar.js"
+import { eventBus } from "../../../services/event-bus.service.js"
 
 export default {
   name: 'EmailIndex',
   props: [],
   template: `
-        <section class="email-index flex">
-          <EmailSideBar/>
-          <!-- <RouterLink to="/email/compose">New Email</RouterLink> -->
-            <hr />
-            <RouterView @updateEmails="updateEmails"/>
-          <div>
+        <section class="email-index">
+         <!-- <div class=" flex justify-center align-center"> -->
             <EmailFilter @filter="setFilterBy" />
+          <!-- </div> -->
+          <RouterView @updateEmails="updateEmails"/>
+          <div class="flex">
+            <EmailSideBar  @filter="setCriteria"/>
             <EmailList 
             :emails="filteredEmails"
             @remove="removeEmail"
-            @updateEmail="updateEmail"/>
+            @toggleStar="saveEmail"/>
           </div>
+          
+          
         </section>
         `,
   components: {
@@ -33,12 +36,13 @@ export default {
   created() {
     emailService.query()
       .then(emails => this.emails = emails)
+    eventBus.on('sent', this.saveEmail)
   },
   data() {
     return {
       emails: [],
       filterBy: {},
-      isCompose:false,
+      criteria:{},
     }
   },
   methods: {
@@ -60,29 +64,55 @@ export default {
     setFilterBy(filterBy) {
       this.filterBy = filterBy
     },
-    updateEmail(email){
+    setCriteria(criteria) {
+        this.criteria = criteria
+        console.log('this.criteria',this.criteria)
+    },
+    saveEmail(email){
+      const isEdit = email.id ? true: false
       emailService.save(email)
-      .then(emails => {
-        emailService.query(emails => this.emails= emails)
+      .then(email => {
+        if(isEdit) {
+          const idx = this.emails.findIndex(e => e.id === email.id)
+          this.emails.splice(idx, 1, email)
+        } else {
+          this.emails.unshift(email)
+        }
       })
     },
     updateEmails() {
       emailService.query(emails => {
         console.log('emails',emails)
-        this.emails= emails
+        this.emails = emails
       } )
     }
   },
   computed: {
     filteredEmails() {
-
       let emails = this.emails
+      if(this.filterBy.isRead) {
+        emails = this.emails.filter(email => email.isRead!==this.filterBy.isRead)
+      }
+      if(this.criteria.status) {
+        if(this.criteria.status==='inbox') {
+          emails = this.emails.filter(email => email.to===emailService.loggedInUser.email)
+        }
+        if(this.criteria.status==='sent') {
+          emails = this.emails.filter(email => email.from===emailService.loggedInUser.email)
+        }
+        if(this.criteria.status==='trash') {
+          emails = this.emails.filter(email => email.isTrash)
+        }
+        if(this.criteria.status==='draft') {
+          emails = this.emails.filter(email => email.isDraft)
+        }
+        if(this.criteria.status==='stared') {
+          emails = this.emails.filter(email => email.isStared)
+        }
+      }
       if(this.filterBy.subject) {
         const regex = new RegExp(this.filterBy.subject, 'i')
         emails = this.emails.filter(email => regex.test(email.subject))
-      }
-      if(this.filterBy.isRead) {
-        emails = this.emails.filter(email => email.isRead!==this.filterBy.isRead)
       }
       return emails
     }

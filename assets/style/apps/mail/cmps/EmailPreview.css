@@ -49,7 +49,7 @@
     color:#a1a1a1; 
 }
 
-.content {
+.email-content {
     display: flex;
     flex-grow: 1;
     width: 0;

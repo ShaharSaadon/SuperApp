@@ -1,0 +1,19 @@
+.side-bar-btn {
+    width: var(--side-bar-width);
+    width: 100%;
+    padding: 8px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: none;
+    margin-block-end: 10px;
+    background-color: inherit;
+    transition: 0.2s;
+}
+
+.side-bar-btn:hover {
+    background-color: rgba(185, 185, 185, 0.438);
+}
+
+.active {
+    background-color: rgba(141, 141, 141, 0.438);
+}
