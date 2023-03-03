@@ -1,0 +1,51 @@
+@media (max-width:700px) {
+    .email-preview .body {
+        display: none;
+    }
+    
+    .email-preview {
+        position: relative;
+    }
+    
+    .email-preview .subject {
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        position: absolute;
+        left: 65px;
+        font-size: 15px;
+        color: rgb(63, 63, 63);
+    }
+
+    .email-preview .body {
+        gap: 0;
+    }
+
+    .email-preview h4 {
+        position: absolute;
+        left:65px;
+        top: 1px;
+    }
+
+    .email-sideBar {
+        position: fixed;
+        z-index: 10;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .emails-list {
+        margin-inline-start: 60px;
+    }
+
+
+
+
+
+
+    /* .email-preview .email-date { */
+    /* position: absolute;
+        right: 10px;
+        top: 50%; */
+    /* } */
+
+}

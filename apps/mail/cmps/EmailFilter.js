@@ -28,24 +28,19 @@ export default {
     },
     toggleReadBtn() {
       this.filterBy.isRead = !this.filterBy.isRead
+      console.log('this.filterBy',this.filterBy)
+      this.$emit('filter', this.filterBy)
     },
     toggleSideBar() {
       this.$emit('toggleSideBar')
     },
   },
-  watch: {
-    filterBy: {
-      handler() {
-        this.$emit('filter', this.filterBy)
-      },
-      deep: true
-    },
-    computed: {
-      toggleReadBtnColor() {
-        return {
-          mark: this.filterBy.isRead
-        }
+  computed: {
+    toggleReadBtnColor() {
+      return {
+        mark: this.filterBy.isRead
       }
-    },
-  }
+    }
+  },
 }
+

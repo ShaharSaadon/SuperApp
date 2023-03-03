@@ -61,7 +61,7 @@ function _createEmail(to, subject, body, from = '') {
     email.id = utilService.makeId()
     email.subject = subject
     email.body = body
-    email.sentAt = (new Date()).toDateString()
+    email.sentAt = (new Date()).toLocaleString('default', { month: 'short' }) + ' ' + ('' + new Date().getDate()).padStart(2,'0')
     return email
 }
 

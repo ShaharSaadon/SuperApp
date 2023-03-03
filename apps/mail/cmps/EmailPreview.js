@@ -6,13 +6,15 @@ export default {
         <article :class="readClass" class="email-preview" @click="showDetails">
 
             <button :class="starClass" class="star-btn" @click.stop="toggleStar"><i class="fa-sharp fa-solid fa-star"></i></button>
-            <h4>{{email.from}}</h4>
-            <p class="email-content">
-              <p class="subject">{{ email.subject }}-</p>
-              <p class="body">{{ email.body }}</p>
+           <!-- <div class="email-subjects"> -->
+             <h4>{{email.from}}</h4>
+             <!-- </div> -->
+             <p class="email-content">
+               <p class="subject">{{ email.subject }} </p>
+              <p class="body"><span class="body-separator"> - </span> {{ email.body }}</p>
             </p>
             <small class="email-date">{{ email.sentAt }}</small>
-            <button class="removeEmail-btn" @click.stop="remove(email.id)"><i class="fa-solid fa-trash-can"></i></button>
+            <button class="removeEmail-btn" @click.stop="remove(email)"><i class="fa-solid fa-trash-can"></i></button>
 
         </article>
         `,
@@ -27,8 +29,8 @@ created() {},
     showDetails(){
         this.$router.push(`/email/${this.email.id}`)
     },
-    remove(emailId) {
-        this.$emit('remove' , emailId)
+    remove(email) {
+        this.$emit('remove' , {...email})
     },
     toggleStar() {
         const email = {...this.email}

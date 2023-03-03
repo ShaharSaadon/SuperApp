@@ -12,7 +12,7 @@ export default {
                 :key="btn.id" 
                 class="side-bar-btn">
                 <i class="folder-icon" :class="btn.icons.join(' ')"></i>
-                <p class="text">{{btn.title}}</p> <p class="text" v-if="btn.inboxCount===inbox">{{inboxMailCounter}}</p>
+                <p class="text">{{btn.title}}</p> <p class="text" v-if="btn.type==='inbox'">{{inboxMailCounter}}</p>
                 </button>
 
             </section>
@@ -90,7 +90,7 @@ export default {
         inboxMailCounter() {
             let counter = 0
             this.emails.filter(email => {
-                if (!email.isRead) ++counter
+                if (!email.isRead && !email.isTrash && !email.isDraft) ++counter
             })
             return counter
         },

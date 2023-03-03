@@ -23,10 +23,11 @@ export default {
             :isSideBarExtend="isSideBarExtend"
             @filter="setCriteria"/>
             
-            <EmailList 
-            :emails="filteredEmails"
-            @remove="removeEmail"
-            @toggleStar="saveEmail"/>
+
+              <EmailList 
+              :emails="filteredEmails"
+              @remove="removeEmail"
+              @toggleStar="saveEmail"/>
           </div>
           
           
@@ -37,7 +38,8 @@ export default {
     emailService,
     EmailFilter,
     EmailCompose,
-    EmailSideBar
+    EmailSideBar,
+    
   },
   created() {
     emailService.query()
@@ -48,27 +50,24 @@ export default {
     return {
       emails: [],
       filterBy: {},
-      criteria:{},
-      isSideBarExtend:false
+      criteria: {},
+      isSideBarExtend: false
     }
   },
   methods: {
-    removeEmail(emailId) {
-      return emailService.get(emailId)
-        .then(email=> {
-          console.log('email',email)
-          if(!email.isTrash) {
-            email.isTrash = true
-            this.saveEmail(email)
-          } else {
-            emailService.remove(emailId)
-              .then(() => {
-                const idx = this.emails.findIndex(email => email.id === emailId)
-                this.emails.splice(idx, 1)
-              })
-            }
-            this.updateEmails()
-        })
+    removeEmail(email) {
+      console.log('email', email)
+      if (!email.isTrash) {
+        email.isTrash = true
+        this.saveEmail(email)
+      } else {
+        emailService.remove(email.id)
+          .then(() => {
+            const idx = this.emails.findIndex(e => e.id === email.id)
+            this.emails.splice(idx, 1)
+          })
+      }
+      // this.updateEmails()
     },
     toggleEmailStar(emailId) {
       emailService.get(emailId)
@@ -81,27 +80,27 @@ export default {
       this.filterBy = filterBy
     },
     setCriteria(criteria) {
-        this.criteria = criteria
-        console.log('this.criteria',this.criteria)
+      this.criteria = criteria
+      console.log('this.criteria', this.criteria)
     },
-    saveEmail(email){
-      const isEdit = email.id ? true: false
+    saveEmail(email) {
+      const isEdit = email.id ? true : false
       emailService.save(email)
-      .then(email => {
-        if(isEdit) {
-          const idx = this.emails.findIndex(e => e.id === email.id)
-          this.emails.splice(idx, 1, email)
-        } else {
-          this.emails.unshift(email)
-        }
-      })
+        .then(email => {
+          if (isEdit) {
+            const idx = this.emails.findIndex(e => e.id === email.id)
+            this.emails.splice(idx, 1, email)
+          } else {
+            this.emails.unshift(email)
+          }
+        })
     },
     updateEmails() {
       emailService.query()
         .then(emails => {
-        // console.log('emails',emails)
-        this.emails = emails
-      })
+          // console.log('emails',emails)
+          this.emails = emails
+        })
     },
     toggleSideBar() {
       this.isSideBarExtend = !this.isSideBarExtend
@@ -110,35 +109,37 @@ export default {
   computed: {
     filteredEmails() {
       let emails = this.emails
-      if(this.filterBy.isRead) {
-        emails = this.emails.filter(email => email.isRead!==this.filterBy.isRead)
+      if (this.filterBy.isRead) {
+        emails = this.emails.filter(email => email.isRead !== this.filterBy.isRead)
       }
-      if(this.criteria.status) {
-        if(this.criteria.status==='inbox') {
+
+      if (this.criteria.status) {
+        if (this.criteria.status === 'inbox') {
           emails = this.emails.filter(email => {
-             email.to===emailService.loggedInUser.email &&
-             !email.isTrash &&
-             !email.isDraft
-            })
+            return email.to === emailService.loggedInUser.email &&
+              !email.isTrash &&
+              !email.isDraft
+          })
         }
-        if(this.criteria.status==='sent') {
-          emails = this.emails.filter(email => email.from===emailService.loggedInUser.email)
+        if (this.criteria.status === 'sent') {
+          emails = this.emails.filter(email => email.from === emailService.loggedInUser.email)
         }
-        if(this.criteria.status==='trash') {
+        if (this.criteria.status === 'trash') {
           emails = this.emails.filter(email => email.isTrash)
         }
-        if(this.criteria.status==='draft') {
+        if (this.criteria.status === 'draft') {
           emails = this.emails.filter(email => email.isDraft)
         }
-        if(this.criteria.status==='stared') {
+        if (this.criteria.status === 'stared') {
           emails = this.emails.filter(email => email.isStared)
         }
       }
-      if(this.filterBy.subject) {
+
+      if (this.filterBy.subject) {
         const regex = new RegExp(this.filterBy.subject, 'i')
         emails = this.emails.filter(email => regex.test(email.subject))
       }
       return emails
     }
-  },
+  }
 }
