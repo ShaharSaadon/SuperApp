@@ -24,3 +24,12 @@ padding-block-end: 5px;
     padding: 10px;
     border-radius: 10px;
 }
+
+.keep-logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--med2-space);
+    color: var(--clr4);
+    font-size: 22px;
+}

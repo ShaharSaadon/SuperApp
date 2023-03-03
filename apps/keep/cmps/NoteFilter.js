@@ -1,6 +1,6 @@
 export default {
     template: `
-            <input type="text" v-model="keyWord" class="search-box">
+            <input type="text" v-model="keyWord" class="search-box" placeholder="Search Note...">
         `,data() {
         return {
             keyWord: ''

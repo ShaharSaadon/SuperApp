@@ -42,6 +42,7 @@
 @import 'apps/note/LabelPicker.css';
 @import 'apps/note/NoteSideBar.css';
 @import 'apps/note/NoteHeader.css';
+@import 'apps/note/mq.css';
 
 
 
@@ -54,4 +55,3 @@
 
 /* MQ */
 @import 'apps/mail/mq.css';
-@import 'apps/keep/mq.css';

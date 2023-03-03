@@ -12,14 +12,16 @@ export default {
             </ul>
 
             <ul>
-                <li v-for="todo in done" @click="toggle($event,todo)" class="doneTodos">
+                <li v-for="todo in done" @click="toggle($event,todo)" class="doneTodos" class="note-label">
                     {{todo.txt}}
                 </li>
             </ul>
 
             <ul class="flex clean-list" >
-    <li v-for="label in info.labels" :style="label.style">
-        {{label.labelType}}
+    <li v-for="label in info.labels" :style="label.style" class="note-label">
+        <span  @mouseover="mouseOn=true" @mouseleave="mouseOn=false">{{label.labelType}}</span>
+        
+        <span class="delete-label" v-if="mouseOn" @click="deleteLabel">x</span>
     </li>
 </ul>
 
@@ -27,7 +29,8 @@ export default {
 </div>
     `,
     data() {
-        return {}
+        return {  mouseOn: false,
+                }
     },
     computed: {
         active() {

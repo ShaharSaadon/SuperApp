@@ -18,8 +18,12 @@ export default {
 
     <div class="note-header flex align-center justify-between">
                 <button @click="toggleSideBar" class="toggle-sideBar-btn flex align-center justify-center">☰</button>
+                <div class="keep-logo">
                 <img src="../../assets/img/google-keep.png">
+                <span>Keep</span>
+                </div>
                 <NoteFilter @filter="setFilterBy"/>
+                <span></span>
     </div>
 
         <NoteSideBar :isSideBarExtend="isSideBarExtend" @setFilterBy="setFilterByType"/>
