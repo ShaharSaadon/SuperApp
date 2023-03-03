@@ -5,8 +5,8 @@ import NoteList from '../cmps/NoteList.js'
 import NoteEdit from '../cmps/NoteEdit.js'
 import NoteFilter from '../cmps/NoteFilter.js'
 import LabelPicker from '../cmps/LabelPicker.js'
-import NoteSideBar from '../cmps/NoteSideBar.js'
 import { utilService } from '../../../services/util.service.js'
+import NoteSideBar from '../cmps/NoteSideBar.js'
 
 
 
@@ -14,33 +14,34 @@ import { utilService } from '../../../services/util.service.js'
 export default {
     name: 'Note Index',
     template: `
-        <AddNote @saveNote="saveNote"/>
+       
+       <NoteSideBar :isSideBarExtend="isSideBarExtend" @setFilterBy="setFilterByType"/>
+
+       <div class="note-header">
         <NoteFilter @filter="setFilterBy"/>
-        <NoteSideBar/>
-        <LabelPicker :note="currNote" @saveNote="saveNote"/>
-        <div>
-        <button @click="filterBy.type=''">All</button>
-        <button @click="filterBy.type='NoteTxt'">Text</button>
-        <button @click="filterBy.type='NoteImg'">Image</button>
-        <button @click="filterBy.type='NoteTodos'">List</button>
-        <button @click="filterBy.type='NoteVideo'">video</button>
+        <img src="../../assets/img/google-keep.png">
         </div>
+        <AddNote @saveNote="saveNote"/>
+        <LabelPicker :note="currNote" @saveNote="saveNote" v-if="showLabel" @hideLabelPicker="hideLabelPicker"/>
+
         <router-view 
-        @save="saveNote" 
-        @duplicate="duplicateNote"
-        @remove="removeNote" >
-    </router-view>
+            @save="saveNote" 
+            @duplicate="duplicateNote"
+            @remove="removeNote" >
+        </router-view>
 
         <h4 v-if="pinnedNotes.length">pinned</h4>
+        
         <NoteList
-        :notes="pinnedNotes"
-        @remove="removeNote" 
-        @save= "saveNote"
-        @edit="editNote"
-        @duplicate="duplicateNote"
-        @addLabel="addLabel"/>
+            :notes="pinnedNotes"
+            @remove="removeNote" 
+            @save= "saveNote"
+            @edit="editNote"
+            @duplicate="duplicateNote"
+            @addLabel="addLabel"/>
 
         <h4 class="others" v-if="unpinnedNotes.length">others</h4>
+        
         <NoteList
         :notes="unpinnedNotes"
         @remove="removeNote" 
@@ -50,13 +51,15 @@ export default {
         @addLabel="addLabel"
         />
 
-        
     `,
     data() {
         return {
             notes: null,
             filterBy: {txt:'',type:''},
             currNote: null,
+            showLabel: false,
+            isSideBarExtend: false
+
         }
     },
     methods: {
@@ -103,8 +106,18 @@ export default {
             })
         },
         addLabel(note){
+            this.showLabel=true
             this.currNote=note
-        }
+        },
+        hideLabelPicker(){
+            this.showLabel=!this.showLabel
+        },
+        toggleSideBar() {
+            this.isSideBarExtend = !this.isSideBarExtend
+          },
+          setFilterByType(filterByType){
+            this.filterBy.type=filterByType
+          }
 
     },
     computed: {

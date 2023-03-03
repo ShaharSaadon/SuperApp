@@ -1,0 +1,29 @@
+.note-side-bar {
+    position: fixed;
+    z-index: 10;
+    background-color: inherit;
+    gap: 15px;
+    padding-inline: 5px;
+    height: 100vh;
+    border-inline-end: 1px solid rgb(180, 180, 180);
+    background-color: white;
+}
+
+  .note-side-bar.extend .text {
+    display: block;
+}
+
+.note-side-bar.extend .side-bar-btn {
+    width: var(--side-bar-width);
+}
+
+.note-side-bar:hover .side-bar-btn {
+    width: var(--side-bar-width);
+}
+
+.note-side-bar:hover .text {
+    display: block;
+}
+
+
+

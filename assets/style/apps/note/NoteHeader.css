@@ -1,0 +1,10 @@
+.note-header{
+display: flex;
+justify-content: space-around;
+height: 3rem;
+gap:10px;
+}
+
+ .search-box{
+    width:70%
+}

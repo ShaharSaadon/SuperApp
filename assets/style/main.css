@@ -40,6 +40,9 @@
 @import 'apps/note/NoteIndex.css';
 @import 'apps/note/NoteTodos.css';
 @import 'apps/note/LabelPicker.css';
+@import 'apps/note/NoteSideBar.css';
+@import 'apps/note/NoteHeader.css';
+
 
 
 

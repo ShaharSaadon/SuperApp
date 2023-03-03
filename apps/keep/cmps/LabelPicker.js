@@ -6,7 +6,7 @@ export default {
 
 <div class="label-picker">
 
-<ul>
+<ul class="clean-list" @click="hideLabelPicker">
     <li class="label" style="background-color: rgb(224, 49, 49)" @click="addLabel('Critical','rgb(224, 49, 49)')">Critical</li>
     <li class="label" style="background-color: rgb(25, 113, 194)" @click="addLabel('Family','rgb(25, 113, 194)')">Family</li>
     <li class="label" style="background-color: rgb(55, 178, 77)" @click="addLabel('Work','rgb(55, 178, 77)')">Work</li>
@@ -37,6 +37,9 @@ export default {
         onSave() {
             this.$emit('saveNote', this.note)
         },
+        hideLabelPicker(){
+            this.$emit('hideLabelPicker')
+        }
     },
 
 }
