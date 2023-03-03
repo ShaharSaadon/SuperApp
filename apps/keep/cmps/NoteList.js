@@ -11,7 +11,8 @@ export default {
                 @removeNote="remove"
                 @save="save"
                 @duplicate="duplicate(note.id)"
-                @click="edit(note.id)" />
+                @click="edit(note.id)" 
+                @addLabel="addLabel"/>
 
                 </div>
 
@@ -32,6 +33,9 @@ export default {
         },
         duplicate(noteId) {
             this.$emit('duplicate', noteId)
+        },
+        addLabel(note) {
+            this.$emit('addLabel', note)
         },
 
 

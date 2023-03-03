@@ -9,6 +9,7 @@ export default {
     props: ['note'],
     template: `
         <article class="note-preview" @mouseover="isHover=true" @mouseleave="isHover=false">
+            
             <component 
                         
                         :is="note.type"  
@@ -23,7 +24,8 @@ export default {
                         @saveNote="save" 
                         @removeNote="removeNote" 
                         @click="prevent"
-                        @duplicateNote="duplicateNote(noteId)"/>
+                        @duplicateNote="duplicateNote(noteId)"
+                        @addLabel="addLabel"/>
                     
         </article>
     `,
@@ -42,6 +44,9 @@ export default {
             },
             duplicateNote(noteId) {
                 this.$emit('duplicate', noteId)
+            },
+            addLabel(note) {
+                this.$emit('addLabel', note)
             },
             prevent(e) {
                 e.stopPropagation()

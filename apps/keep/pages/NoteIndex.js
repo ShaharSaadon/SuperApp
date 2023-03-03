@@ -4,6 +4,7 @@ import AddNote from '../cmps/AddNote.js'
 import NoteList from '../cmps/NoteList.js'
 import NoteEdit from '../cmps/NoteEdit.js'
 import NoteFilter from '../cmps/NoteFilter.js'
+import LabelPicker from '../cmps/LabelPicker.js'
 import { utilService } from '../../../services/util.service.js'
 
 
@@ -13,7 +14,7 @@ export default {
     template: `
         <AddNote @saveNote="saveNote"/>
         <NoteFilter @filter="setFilterBy"/>
-        
+        <LabelPicker :note="currNote"/>
         <div>
         <button @click="filterBy.type=''">All</button>
         <button @click="filterBy.type='NoteTxt'">Text</button>
@@ -33,7 +34,8 @@ export default {
         @remove="removeNote" 
         @save= "saveNote"
         @edit="editNote"
-        @duplicate="duplicateNote"/>
+        @duplicate="duplicateNote"
+        @addLabel="addLabel"/>
 
         <h4 class="others" v-if="unpinnedNotes.length">others</h4>
         <NoteList
@@ -49,7 +51,8 @@ export default {
     data() {
         return {
             notes: null,
-            filterBy: {txt:'',type:''}
+            filterBy: {txt:'',type:''},
+            currNote: null,
         }
     },
     methods: {
@@ -93,6 +96,9 @@ export default {
                 })
          
             })
+        },
+        addLabel(note){
+            this.currNote=note
         }
 
     },
@@ -137,6 +143,7 @@ export default {
         NoteList,
         AddNote,
         NoteEdit,
+        LabelPicker,
         NoteFilter
     }
 }

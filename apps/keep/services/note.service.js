@@ -147,11 +147,13 @@ function _createNote(type) {
                 isPinned: false,
                 info: {
                     title: '',
-                    txt: ''
+                    txt: '',
+                    labels: [],
+
                 },
                 style: {
                     backgroundColor: '#404040'
-                }
+                },
             }
 
         case 'NoteVideo':
