@@ -1,11 +1,13 @@
 .note-header{
 display: flex;
 justify-content: space-around;
-height: 3rem;
 gap:10px;
 z-index: 1000;
 padding-inline-end: 150px;
-/* padding-block-start: 20px; */
+border-bottom: 1px solid var(--clr2);
+padding-block-end: 100x;
+padding-block-start: 5px;
+padding-block-end: 5px;
 }
 
 .note-header img {

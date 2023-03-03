@@ -16,16 +16,18 @@ export default {
     template: `
        
 
-       <div class="note-header flex align-center justify-between">
-       <button @click="toggleSideBar" class="toggle-sideBar-btn flex align-center justify-center">☰</button>
-       <img src="../../assets/img/google-keep.png">
-        <NoteFilter @filter="setFilterBy"/>
+    <div class="note-header flex align-center justify-between">
+                <button @click="toggleSideBar" class="toggle-sideBar-btn flex align-center justify-center">☰</button>
+                <img src="../../assets/img/google-keep.png">
+                <NoteFilter @filter="setFilterBy"/>
+    </div>
 
-        </div>
         <NoteSideBar :isSideBarExtend="isSideBarExtend" @setFilterBy="setFilterByType"/>
+        <LabelPicker :note="currNote" @saveNote="saveNote" v-if="showLabel" @hideLabelPicker="hideLabelPicker"/>
 
         <AddNote @saveNote="saveNote"/>
-        <LabelPicker :note="currNote" @saveNote="saveNote" v-if="showLabel" @hideLabelPicker="hideLabelPicker"/>
+
+                            <!-- Edit Note Start -->
 
         <router-view 
             @save="saveNote" 
@@ -33,6 +35,10 @@ export default {
             @remove="removeNote" >
         </router-view>
 
+                            <!-- Edit Note End -->
+
+    <div class="notes-container">
+        
         <h4 v-if="pinnedNotes.length">pinned</h4>
         
         <NoteList
@@ -53,7 +59,7 @@ export default {
         @duplicate="duplicateNote"
         @addLabel="addLabel"
         />
-
+    </div>
     `,
     data() {
         return {

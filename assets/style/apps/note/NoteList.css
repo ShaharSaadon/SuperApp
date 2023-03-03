@@ -1,9 +1,12 @@
 .note-list {
     columns: auto 12em;
     column-gap: 1rem;
-    
 }
 
 .note{
     height: max-content;
+}
+
+.notes-container{
+margin-inline-start: 65px;
 }

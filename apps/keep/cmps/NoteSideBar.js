@@ -20,41 +20,41 @@ export default {
                     title: 'All',
                     type: '',
                     icons: ['fa-solid', 'fa-inbox'],
-
+                  
                 },
                 {
                     id: 'btn1',
                     title: 'Text',
                     type: 'NoteTxt',
-                    icons: ['fa-solid', 'fa-inbox'],
+                    icons: ['fa-solid', 'fa-font'],
 
                 },
                 {
                     id: 'btn2',
                     title: 'Image',
                     type: 'NoteImg',
-                    icons: ['fa-solid', 'fa-star'],
+                    icons: ['fa-regular', 'fa-image'],
                     inboxCount: 'inbox'
                 },
                 {
                     id: 'btn3',
                     title: 'Todos',
                     type: 'NoteTodos',
-                    icons: ['fa-solid', 'fa-paper-plane'],
+                    icons: ['fa-solid', 'fa-list'],
                     inboxCount: 'inbox'
                 },
                 {
                     id: 'btn4',
                     title: 'Video',
                     type: 'NoteVideo',
-                    icons: ['fa-solid', 'fa-file'],
+                    icons: ['fa-brands', 'fa-youtube'],
                     inboxCount: 'inbox'
                 },
                 {
                     id: 'btn5',
                     title: 'Audio',
                     type: 'NoteAudio',
-                    icons: ['fa-solid', 'fa-trash'],
+                    icons: ['fa-solid', 'fa-microphone'],
                     inboxCount: 'inbox'
                 },
 

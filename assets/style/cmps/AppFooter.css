@@ -1,13 +1,16 @@
 .app-footer{
-margin-block-start: 3rem;
-background-color: rgb(255, 255, 255);
-padding: 1em;
+position: fixed;
+display: flex;
 align-items: center;
 justify-content: center;
--webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.4);
-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4);
-position: fixed;
+
+margin-block-start: 3rem;
 bottom:0px;
-width: 100vw;
-display: flex;
+padding: var(--large-space);
+width: calc(100vw);
+
+background-color: rgb(255, 255, 255);
+-webkit-box-shadow: 0px 0px 0px 0px var(--shadow3);
+box-shadow: 0px 0px 5px 2px var(--shadow3);
+
 }

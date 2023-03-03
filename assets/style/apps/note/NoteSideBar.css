@@ -5,8 +5,10 @@
     gap: 15px;
     padding-inline: 5px;
     height: 100vh;
-    border-inline-end: 1px solid rgb(180, 180, 180);
-    background-color: white;
+    border-inline-end: 1px solid var(--clr2);
+    background: var(--clr1);
+
+;
 }
 
   .note-side-bar.extend .text {
