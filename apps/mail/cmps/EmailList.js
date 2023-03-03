@@ -1,5 +1,5 @@
 import EmailPreview from "./EmailPreview.js"
-import EmailDetails from "../pages/EmailDetails.js"
+import EmailDetails from "./EmailDetails.js"
 
 export default {
   name: 'EmailList', 

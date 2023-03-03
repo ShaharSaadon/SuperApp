@@ -2,7 +2,7 @@ import { emailService } from "../services/Email.service.js"
 import EmailList from "../cmps/EmailList.js"
 import EmailFilter from "../cmps/EmailFilter.js"
 import EmailCompose from "../cmps/EmailCompose.js"
-import EmailDetails from "./EmailDetails.js"
+import EmailDetails from "../cmps/EmailDetails.js"
 import EmailSideBar from "../cmps/EmailSideBar.js"
 import { eventBus } from "../../../services/event-bus.service.js"
 
@@ -11,23 +11,25 @@ export default {
   props: [],
   template: `
         <section class="email-index">
+
          <!-- <div class=" flex justify-center align-center"> -->
             <EmailFilter 
             @filter="setFilterBy"
             @toggleSideBar="toggleSideBar" />
           <!-- </div> -->
           <RouterView @updateEmails="updateEmails"/>
+
           <div class="flex">
             <EmailSideBar  
             :emails="emails"
             :isSideBarExtend="isSideBarExtend"
             @filter="setCriteria"/>
-            
-
+            <EmailDetails/>
               <EmailList 
               :emails="filteredEmails"
               @remove="removeEmail"
               @toggleStar="saveEmail"/>
+
           </div>
           
           
@@ -39,7 +41,7 @@ export default {
     EmailFilter,
     EmailCompose,
     EmailSideBar,
-    
+    EmailDetails,
   },
   created() {
     emailService.query()
