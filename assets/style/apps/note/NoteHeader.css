@@ -3,8 +3,22 @@ display: flex;
 justify-content: space-around;
 height: 3rem;
 gap:10px;
+z-index: 1000;
+padding-inline-end: 150px;
+/* padding-block-start: 20px; */
 }
 
- .search-box{
-    width:70%
+.note-header img {
+    height: 50px;
+}
+
+
+.note-header [type="text"] {
+    border: none;
+    width: 70%;
+    outline: none;
+    background-color: rgba(183, 218, 231, 0.719);
+    height: 45px;
+    padding: 10px;
+    border-radius: 10px;
 }

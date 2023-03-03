@@ -15,12 +15,15 @@ export default {
     name: 'Note Index',
     template: `
        
-       <NoteSideBar :isSideBarExtend="isSideBarExtend" @setFilterBy="setFilterByType"/>
 
-       <div class="note-header">
+       <div class="note-header flex align-center justify-between">
+       <button @click="toggleSideBar" class="toggle-sideBar-btn flex align-center justify-center">☰</button>
+       <img src="../../assets/img/google-keep.png">
         <NoteFilter @filter="setFilterBy"/>
-        <img src="../../assets/img/google-keep.png">
+
         </div>
+        <NoteSideBar :isSideBarExtend="isSideBarExtend" @setFilterBy="setFilterByType"/>
+
         <AddNote @saveNote="saveNote"/>
         <LabelPicker :note="currNote" @saveNote="saveNote" v-if="showLabel" @hideLabelPicker="hideLabelPicker"/>
 
