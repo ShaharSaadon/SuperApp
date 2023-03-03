@@ -22,6 +22,7 @@
     display: grid;
     grid-template-columns: 20px 1fr;
     gap: 20px;
+    color: black;
 }
 
 .email-sideBar.extend .text {
@@ -39,4 +40,21 @@
     padding-inline-end: 20px;
     padding-inline-start: 20px;
 }
+
+.email-sideBar:hover .side-bar-btn {
+    width: var(--side-bar-width);
+}
+
+.email-sideBar:hover .email-compose-link {
+    width: var(--side-bar-width);
+    height: 60px;
+    padding: 10px;
+    padding-inline-end: 20px;
+    padding-inline-start: 20px;
+}
+
+.email-sideBar:hover .text {
+    display: block;
+}
+
 

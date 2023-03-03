@@ -61,12 +61,25 @@
     text-overflow: ellipsis;
     font-weight: 700;
 }
+
 .body {
     /* width: 100%; */
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
 } 
+
+.email-subjects {
+    display: flex;
+}
+
+.email-preview h4 {
+    width: 150px;
+}
+
+.body .body-separator {
+    padding-inline: 10px;
+}
 
 .star-btn {
     display: flex;

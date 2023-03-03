@@ -26,8 +26,8 @@ created() {},
     return {}
   },
   methods: {
-    remove(emailId) {
-        this.$emit('remove', emailId)
+    remove(email) {
+        this.$emit('remove', email)
     },
     toggleStar(email) {
         this.$emit('toggleStar', email)
