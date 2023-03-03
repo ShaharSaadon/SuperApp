@@ -3,12 +3,12 @@ import EmailFolderList from "./EmailFolderList.js"
 
 export default {
   name: 'EmailSideBar', 
-  props: ['emails'],
+  props: ['emails','isSideBarExtend'],
   template: `
-             <section class="email-sideBar flex flex-column">
+             <section class="email-sideBar flex flex-column" :class="sideBarExtend">
 
                 <RouterLink class="email-compose-link flex justify-center align-center"
-                to="/email/compose">Compose</RouterLink>
+                to="/email/compose"><i class="folder-icon fa-solid fa-pencil"></i><p class="text">Compose</p></RouterLink>
                 <EmailFolderList 
                 :emails="emails"
                 @filter="filterByFolders"/>
@@ -21,12 +21,19 @@ components:{
 },
 created() {},
   data() {
-    return {}
+    return {
+    }
   },
   methods: {
     filterByFolders(criteria) {
       this.$emit('filter' , criteria)
+    },
+  },
+  computed: {
+    sideBarExtend() {
+      return {
+        extend:this.isSideBarExtend
+      }
     }
   },
-  computed: {},
 }

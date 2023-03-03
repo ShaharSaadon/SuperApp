@@ -10,7 +10,10 @@ export default {
                 :class="{'active': this.active === btn.type}" 
                 @click="changeFolder(btn.type)" 
                 :key="btn.id" 
-                class="side-bar-btn flex justify-center align-center">{{btn.title}} <p v-if="btn.inboxCount===inbox">{{inboxMailCounter}}</p></button>
+                class="side-bar-btn">
+                <i class="folder-icon" :class="btn.icons.join(' ')"></i>
+                <p class="text">{{btn.title}}</p> <p class="text" v-if="btn.inboxCount===inbox">{{inboxMailCounter}}</p>
+                </button>
 
             </section>
         `,
@@ -38,21 +41,21 @@ export default {
                     id: 'btn2',
                     title: 'Stared',
                     type: 'stared',
-                    icons: ['fa-solid', 'fa-inbox'],
+                    icons: ['fa-solid', 'fa-star'],
                     inboxCount: 'inbox'
                 },
                 {
                     id: 'btn3',
                     title: 'Sent',
                     type: 'sent',
-                    icons: ['fa-solid', 'fa-inbox'],
+                    icons: ['fa-solid', 'fa-paper-plane'],
                     inboxCount: 'inbox'
                 },
                 {
                     id: 'btn4',
                     title: 'Draft',
                     type: 'draft',
-                    icons: ['fa-solid', 'fa-inbox'],
+                    icons: ['fa-solid', 'fa-file'],
                     inboxCount: 'inbox'
                 },
                 {

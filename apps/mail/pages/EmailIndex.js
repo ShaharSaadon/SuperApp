@@ -12,12 +12,15 @@ export default {
   template: `
         <section class="email-index">
          <!-- <div class=" flex justify-center align-center"> -->
-            <EmailFilter @filter="setFilterBy" />
+            <EmailFilter 
+            @filter="setFilterBy"
+            @toggleSideBar="toggleSideBar" />
           <!-- </div> -->
           <RouterView @updateEmails="updateEmails"/>
           <div class="flex">
             <EmailSideBar  
             :emails="emails"
+            :isSideBarExtend="isSideBarExtend"
             @filter="setCriteria"/>
             
             <EmailList 
@@ -46,6 +49,7 @@ export default {
       emails: [],
       filterBy: {},
       criteria:{},
+      isSideBarExtend:false
     }
   },
   methods: {
@@ -98,6 +102,9 @@ export default {
         // console.log('emails',emails)
         this.emails = emails
       })
+    },
+    toggleSideBar() {
+      this.isSideBarExtend = !this.isSideBarExtend
     }
   },
   computed: {

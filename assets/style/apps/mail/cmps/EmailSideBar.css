@@ -7,16 +7,36 @@
 }
 
 :root {
-    --side-bar-width: 130px  
+    --side-bar-width: 130px;  
+    --side-bar-small-width:50px 
 }
 
 .email-compose-link {
     background-color: rgb(166, 213, 231);
-    width: var(--side-bar-width);
-    height: 60px;
-    padding: 10px;
+    width:var(--side-bar-small-width) ;
+    height: 40px;
+    padding-inline-start: 20px;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     margin-block-start: 5px;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 20px;
+}
+
+.email-sideBar.extend .text {
+    display: block;
+}
+
+.email-sideBar.extend .side-bar-btn {
+    width: var(--side-bar-width);
+}
+
+.email-sideBar.extend .email-compose-link {
+    width: var(--side-bar-width);
+    height: 60px;
+    padding: 10px;
+    padding-inline-end: 20px;
+    padding-inline-start: 20px;
 }
 

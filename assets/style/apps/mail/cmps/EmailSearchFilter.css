@@ -1,8 +1,10 @@
 .search-emails-filter {
-    padding-inline-start: 50px;
+    padding-inline-start: 20px;
+    padding-inline-end: 10px;
     padding-block: 10px;
     /* margin-block-end: 15px; */
     border-block-end: 1px solid rgb(196, 196, 196);
+    gap: 10px;
 }
 
 .search-emails-filter img {
@@ -17,6 +19,20 @@
     height: 45px;
     padding: 10px;
     border-radius: 10px;
+}
+
+.toggle-sideBar-btn {
+    background-color: inherit;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    height: 45px;
+    width: 45px;
+}
+
+.toggle-sideBar-btn:hover {
+    background-color: rgba(185, 185, 185, 0.438);
 }
 
 .search-emails-filter .readBtn {
