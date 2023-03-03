@@ -1,0 +1,28 @@
+.about-us-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: #000;
+    letter-spacing: 0.1rem;
+	transition: all 0.5s ease;
+	font-size: 0.8rem;
+    flex-direction: column;
+}
+
+.us{
+    margin-block-start: 3rem;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10rem;
+}
+
+.about-us-container img{
+    width: 200px;
+}
+
+.about-display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

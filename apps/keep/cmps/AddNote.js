@@ -1,79 +1,31 @@
 import { noteService } from "../services/note.service.js"
-import AddNoteActions from './AddNoteActions.js'
-import UploadImage from "./UploadImage.js"
-import UploadVideo from "./UploadVideo.js"
+import AddNoteTxt from '../cmps/NoteAdds/AddNoteTxt.js'
+import AddNoteImg from '../cmps/NoteAdds/AddNoteImg.js'
+import AddNoteVideo from '../cmps/NoteAdds/AddNoteVideo.js'
+import AddNoteAudio from '../cmps/NoteAdds/AddNoteAudio.js'
+import AddTitle from '../cmps/NoteAdds/AddTitle.js'
+import AddTodosNote from '../cmps/NoteAdds/AddTodosNote.js'
 
 export default {
     template: `
         <section class="add-note">
-            <button @click="save">a</button>
-
-                <div class="note-inputs">
-                    <textarea @input="resize()" 
-                        ref="textarea" 
-                        class="note-input-title" 
-                        v-model="note.info.title" 
-                        placeholder="Title">
-                    </textarea>
             
-                
-            <!-- Add Text Inputs Start -->
-                    <textarea 
-                    v-if="type==='NoteTxt'"
-                        @input="resize()" 
-                        ref="textarea" 
-                        class="note-input-txt" 
-                        v-model="note.info.txt" 
-                        placeholder="Take a note...">
-                    </textarea>
-            <!-- Add Text Inputs End -->
+            <button @click="save" v-if="note.info.title">a</button>
 
-            <!-- Add Img Inputs Start -->
-                    <textarea 
-                    v-if="type==='NoteImg'"
-                        @input="resize()" 
-                        ref="textarea" 
-                        class="note-input-txt" 
-                        v-model="note.info.iUrl" 
-                        placeholder="Enter Image Url...">
-                    </textarea>
-                    <UploadImage v-if="type==='NoteImg'" @uploadImage="uploadImage"/>
-            <!-- Add Img Inputs End -->
+            <div class="note-inputs">
 
-            <!-- Add Video Inputs Start -->
-                    <textarea 
-                    v-if="type==='NoteVideo'"
-                        @input="resize()" 
-                        ref="textarea" 
-                        class="note-input-txt" 
-                        v-model="note.info.vUrl" 
-                        placeholder="Enter Video Url from YouTube...">
-                    </textarea>
-            <UploadVideo v-if="type==='NoteVideo'" @uploadVideo="uploadVideo"/>
+            <AddTitle :info="note.info"/>        
+                   
+            <AddNoteTxt :info="note.info" v-if="type==='NoteTxt'"/>
 
-            <!-- Add Img Inputs End -->
+            <AddNoteImg :info="note.info" v-if="type==='NoteImg'" @updateInfo="updateInfo"/> 
+            
+            <AddNoteVideo :info="note.info" v-if="type==='NoteVideo'" @updateInfo="updateInfo"/>
 
-            <!-- Add Video Inputs Start -->
-                    <input type="text" 
-                        v-if="type==='NoteTodos'"
-                        @input="resize()" 
-                        ref="textarea" 
-                        class="note-input-txt" 
-                        v-model="note.info.todos.txt"
-                        placeholder="List item">
-
-            <!-- Add Img Inputs End -->
-
-            <!-- Add Audio Inputs Start -->
-                    <input type="text" 
-                        v-if="type==='NoteAudio'"
-                        @input="resize()" 
-                        ref="textarea" 
-                        class="note-input-txt" 
-                        v-model="note.info.aUrl"
-                        placeholder="Enter Audio Url...">
-
-            <!-- Add Img Inputs End -->
+            <AddNoteAudio :info="note.info" v-if="type==='NoteAudio'" @updateInfo="updateInfo"/> 
+            
+            <AddTodosNote :info="note.info" v-if="type==='NoteTodos'"/> 
+                                                          
             </div>
 
             
@@ -111,12 +63,8 @@ export default {
             element.style.height = "18px";
             element.style.height = element.scrollHeight + "px";
         },
-        uploadImage(imageUrl){
-            this.note.info.iUrl=imageUrl
-            this.save()
-        },
-        uploadVideo(videoUrl){
-            this.note.info.vUrl=videoUrl
+        updateInfo(info){
+            this.note.info = info
             this.save()
         }
     },
@@ -126,9 +74,12 @@ export default {
         }
     },
     components: {
-        AddNoteActions,
-        UploadImage,
-        UploadVideo,
+        AddTitle,
+        AddNoteTxt,
+        AddNoteImg,
+        AddNoteVideo,
+        AddNoteAudio,
+        AddTodosNote,
     }
 
 }

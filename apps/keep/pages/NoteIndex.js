@@ -5,8 +5,9 @@ import NoteList from '../cmps/NoteList.js'
 import NoteEdit from '../cmps/NoteEdit.js'
 import NoteFilter from '../cmps/NoteFilter.js'
 import LabelPicker from '../cmps/LabelPicker.js'
-import UploadImage from '../cmps/UploadImage.js'
+import NoteSideBar from '../cmps/NoteSideBar.js'
 import { utilService } from '../../../services/util.service.js'
+
 
 
 
@@ -15,6 +16,7 @@ export default {
     template: `
         <AddNote @saveNote="saveNote"/>
         <NoteFilter @filter="setFilterBy"/>
+        <NoteSideBar/>
         <LabelPicker :note="currNote" @saveNote="saveNote"/>
         <div>
         <button @click="filterBy.type=''">All</button>
@@ -45,6 +47,7 @@ export default {
         @save= "saveNote"
         @edit="editNote"
         @duplicate="duplicateNote"
+        @addLabel="addLabel"
         />
 
         
@@ -147,6 +150,6 @@ export default {
         NoteEdit,
         LabelPicker,
         NoteFilter,
-        UploadImage,
+        NoteSideBar,
     }
 }

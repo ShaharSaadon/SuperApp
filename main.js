@@ -13,12 +13,14 @@ const options = {
             <RouterView />
             <AppFooter />
             <UserMsg />
+            <!-- <HomePage/> -->
         </section>
     `,
 	components: {
 		AppHeader,
 		AppFooter,
 		UserMsg,
+        
 	},
 }
 

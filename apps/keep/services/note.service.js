@@ -16,7 +16,7 @@ export const noteService = {
 const notesDB = [
     {
         id: 'n100',
-        createdAt: 111111,
+        createdAt: Date.now(),
         isPinned: true,
         type: 'NoteTxt',
         style: {
@@ -24,12 +24,13 @@ const notesDB = [
         },
         info: {
             title: '11',
-            txt: 'hi'
+            txt: 'hi',
+            labels: [],
         }
     },
     {
         id: 'n101',
-        createdAt: 22222,
+        createdAt: Date.now(),
         isPinned: true,
         type: 'NoteTxt',
         style: {
@@ -37,12 +38,13 @@ const notesDB = [
         },
         info: {
             title: '22',
-            txt: 'bye'
+            txt: 'bye',
+            labels: [],
         }
     },
     {
-        id: 'n100',
-        createdAt: 111111,
+        id: 'n102',
+        createdAt: Date.now(),
         isPinned: true,
         type: 'NoteTxt',
         style: {
@@ -50,18 +52,20 @@ const notesDB = [
         },
         info: {
             title: '33',
-            txt: 'good'
+            txt: 'good',
+            labels: [],
         }
     },
     {
         id: 'n104',
-        createdAt: 111111,
+        createdAt: Date.now(),
         type: 'NoteImg',
         isPinned: false,
         info: {
             iUrl: 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-purim-clown-doll-mask-party-balloon-png-image_5330090.jpg',
             title: 'PURIM',
-            txt: 'aa'
+            txt: 'aa',
+            labels: [],
         },
         style: {
             backgroundColor: '#404040'
@@ -69,13 +73,14 @@ const notesDB = [
     },
     {
         id: 'n105',
-        createdAt: 111111,
+        createdAt: Date.now(),
         type: 'NoteVideo',
         isPinned: false,
         info: {
             vUrl: 'https://www.youtube.com/embed/7jfxcDudvS8',
             title: 'Burnning Man',
-            txt: 'my dream'
+            txt: 'my dream',
+            labels: [],
         },
         style: {
             backgroundColor: '#404040'
@@ -83,7 +88,7 @@ const notesDB = [
     },
     {
         id: 'n106',
-        createdAt: 111111,
+        createdAt: Date.now(),
         type: 'NoteTodos',
         isPinned: false,
         info: {
@@ -92,13 +97,35 @@ const notesDB = [
                 { txt: 'Driving license', doneAt: null },
                 { txt: 'Coding power', doneAt: 187111111 }
             ],
-            txt: ''
+            txt: '',
+            labels: [],
+
+        },
+        style: {
+            backgroundColor: '#404040'
+        }
+    },
+    {
+        id: 'n106',
+        createdAt: Date.now(),
+        type: 'NoteAudio',
+        isPinned: false,
+        info: {
+            aUrl: '',
+            title: '',
+            txt: '',
+            labels: [],
 
         },
         style: {
             backgroundColor: '#404040'
         }
     }
+   
+           
+        
+        
+
 
     // {
     //     type: 'NoteImg',
@@ -164,7 +191,8 @@ function _createNote(type) {
                 info: {
                     vUrl: '',
                     title: '',
-                    txt: ''
+                    txt: '',
+                    labels: [],
                 },
                 style: {
                     backgroundColor: '#404040'
@@ -179,7 +207,8 @@ function _createNote(type) {
                 info: {
                     iUrl: '',
                     title: '',
-                    txt: ''
+                    txt: '',
+                    labels: [],
                 },
                 style: {
                     backgroundColor: '#404040'
@@ -188,14 +217,14 @@ function _createNote(type) {
             
         case 'NoteTodos':
            return {
-                createdAt: getDate.now(),
+                createdAt: Date.now(),
                 type,
                 isPinned: false,
                 info: {
                     title: '',
                     todos: [
-                        { txt: '', doneAt: null },
                     ],
+                    labels: [],
                     txt: ''               
                 },
                 style: {
@@ -211,6 +240,7 @@ function _createNote(type) {
                          aUrl: '',
                          title: '',
                          txt: '',
+                         labels: [],
                      },
                      style: {
                          backgroundColor: '#404040'

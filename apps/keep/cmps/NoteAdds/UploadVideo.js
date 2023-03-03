@@ -24,7 +24,6 @@ export default {
     }, watch: {
         videoUrl() {
             this.$emit('uploadVideo', this.videoUrl)
-
         }
     }
 }

@@ -1,6 +1,4 @@
 import NotePreview from './NotePreview.js'
-import NoteTxt from './NoteTxt.js'
-import NoteEdit from './NoteEdit.js'
 
 export default {
     props: ['notes'],

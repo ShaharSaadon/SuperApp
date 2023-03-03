@@ -1,9 +1,9 @@
 import NoteActions from "./NoteActions.js"
-import NoteTxt from "./NoteTxt.js"
-import NoteImg from "./NoteImg.js"
-import NoteVideo from "./NoteVideo.js"
-import NoteTodos from "./NoteTodos.js"
-import NoteAudio from "./NoteAudio.js"
+import NoteTxt from "./NoteTypes/NoteTxt.js"
+import NoteImg from "./NoteTypes/NoteImg.js"
+import NoteVideo from "./NoteTypes/NoteVideo.js"
+import NoteTodos from "./NoteTypes/NoteTodos.js"
+import NoteAudio from "./NoteTypes/NoteAudio.js"
 
 export default {
     props: ['note'],

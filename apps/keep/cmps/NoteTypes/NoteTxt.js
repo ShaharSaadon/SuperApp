@@ -5,19 +5,21 @@ export default {
 <div class="note-content">
 
 <h3>{{info.title}}</h3>
-<img :src="info.iUrl">
 <p ref="textarea">{{info.txt}} </p>
+<ul class="flex clean-list" >
+    <li v-for="label in info.labels" :style="label.style">
+        {{label.labelType}}
+    </li>
+</ul>
 
 </div>
     `,
     data() {
-        return {        }
+        return {
+            txt: this.info.txt
+        }
     },
     methods: {
-        onSave() {
-            this.$emit('saveNote')
-        },
-
     },
   
 }

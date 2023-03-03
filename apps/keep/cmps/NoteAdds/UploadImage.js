@@ -2,7 +2,7 @@ export default {
     template: `
         <form>
             <label for="imageUpload">Select an image:</label>
-            <input type="file" id="imageUpload" name="imageUpload" @change="onFileChange">
+            <input ref="reader" type="file" id="imageUpload" name="imageUpload" @change="onFileChange">
         </form>
         
     `, data() {
@@ -21,8 +21,8 @@ export default {
           }
     }, watch:{
         imageUrl(){
+                this.$refs.reader.value=''
                 this.$emit('uploadImage', this.imageUrl)
-            
         }
     }
 }
