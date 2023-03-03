@@ -1,3 +1,5 @@
+import { noteService } from "../services/note.service.js"
+
 export default {
     props: ['note'],
     template: `
@@ -21,17 +23,21 @@ export default {
         return {}
     },
     methods: {
-     addLabel(labelType,color){
-        console.log(this.note)
-        this.note.info.labels.push({
-            labelType,
-            style: {
-                backgroundColor: color,
-            },
-        })
-        console.log(this.note)
-     }
+        addLabel(labelType, color) {
+            console.log(this.note)
+            this.note.info.labels.push({
+                labelType,
+                style: {
+                    backgroundColor: color,
+                },
+            })
+            console.log(this.note)
+            this.onSave()
+        },
+        onSave() {
+            this.$emit('saveNote', this.note)
+        },
     },
-  
+
 }
 

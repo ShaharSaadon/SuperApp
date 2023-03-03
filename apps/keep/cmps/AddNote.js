@@ -1,5 +1,7 @@
 import { noteService } from "../services/note.service.js"
 import AddNoteActions from './AddNoteActions.js'
+import UploadImage from "./UploadImage.js"
+import UploadVideo from "./UploadVideo.js"
 
 export default {
     template: `
@@ -35,6 +37,7 @@ export default {
                         v-model="note.info.iUrl" 
                         placeholder="Enter Image Url...">
                     </textarea>
+                    <UploadImage v-if="type==='NoteImg'" @uploadImage="uploadImage"/>
             <!-- Add Img Inputs End -->
 
             <!-- Add Video Inputs Start -->
@@ -46,7 +49,8 @@ export default {
                         v-model="note.info.vUrl" 
                         placeholder="Enter Video Url from YouTube...">
                     </textarea>
-                 
+            <UploadVideo v-if="type==='NoteVideo'" @uploadVideo="uploadVideo"/>
+
             <!-- Add Img Inputs End -->
 
             <!-- Add Video Inputs Start -->
@@ -107,6 +111,14 @@ export default {
             element.style.height = "18px";
             element.style.height = element.scrollHeight + "px";
         },
+        uploadImage(imageUrl){
+            this.note.info.iUrl=imageUrl
+            this.save()
+        },
+        uploadVideo(videoUrl){
+            this.note.info.vUrl=videoUrl
+            this.save()
+        }
     },
     watch: {
         type() {
@@ -114,7 +126,9 @@ export default {
         }
     },
     components: {
-        AddNoteActions
+        AddNoteActions,
+        UploadImage,
+        UploadVideo,
     }
 
 }

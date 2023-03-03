@@ -38,7 +38,7 @@ export default {
             placeholder="Take a note...">
         </textarea> 
 
-        <p class="last-edit" :title="note.createdAt">{{lastEdit}}</p>
+        <p class="last-edit" :title="'Created At ' + new Date(note.createdAt)">{{lastEdit}}</p>
 
                 <EditNoteActions 
                 v-if="note" 

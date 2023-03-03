@@ -18,8 +18,6 @@ export default {
 
         </section>
 
-       
-
     `,
     methods: {
         remove(noteId) {

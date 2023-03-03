@@ -188,7 +188,7 @@ function _createNote(type) {
             
         case 'NoteTodos':
            return {
-                createdAt: Date.now(),
+                createdAt: getDate.now(),
                 type,
                 isPinned: false,
                 info: {
