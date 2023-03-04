@@ -44,13 +44,11 @@
 @import 'apps/note/NoteHeader.css';
 @import 'apps/note/mq.css';
 
+/* BOOKS */
 
-
-
-
-
-
-
+@import 'apps/books/BookList.css';
+@import 'apps/books/BookAdd.css';
+@import 'apps/books/BookDetails.css';
 
 
 /* MQ */

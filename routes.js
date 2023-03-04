@@ -5,6 +5,10 @@ import EmailIndex from './apps/mail/pages/EmailIndex.js'
 import EmailDetails from './apps/mail/cmps/EmailDetails.js'
 import EmailCompose from './apps/mail/cmps/EmailCompose.js'
 import NoteEdit from './apps/keep/cmps/NoteEdit.js'
+import BookIndex from './apps/books/pages/BookIndex.js'
+import BookDetails from './apps/books/pages/BookDetails.js'
+import BookEdit from './apps/books/pages/BookEdit.js'
+import BookAdd from './apps/books/cmps/BookAdd.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -43,6 +47,22 @@ const routerOptions = {
 				}
 			]
 		},
+		{
+			path: '/books',
+			component: BookIndex,
+		},
+		{
+            path: '/books/:bookId',
+            component: BookDetails
+        },
+        {
+            path: '/books/edit/:bookId?',
+            component: BookEdit
+        },
+        {
+            path: '/add',
+            component: BookAdd
+        },
 	],
 }
 
