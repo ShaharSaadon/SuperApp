@@ -7,7 +7,7 @@ export default {
   template: `
         <section class="emails-list">
             <ul>
-                <li v-for="email in emails" :key="email.id">
+                <li @click.stop="showDetails(email.id)" v-for="email in emails" :key="email.id">
                     <EmailPreview 
                     :email="email"
                     @remove="remove"
@@ -15,6 +15,7 @@ export default {
                    
                 </li>
             </ul>
+            <RouterView />
         </section>
         `,
 components:{
@@ -31,7 +32,10 @@ created() {},
     },
     toggleStar(email) {
         this.$emit('toggleStar', email)
-
+    },
+    showDetails(emailId) {
+      // this.$emit('showDetails' , emailId)
+      this.$router.push(`/email/${emailId}`)
     }
   },
   computed: {},

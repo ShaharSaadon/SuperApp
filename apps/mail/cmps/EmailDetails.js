@@ -6,16 +6,19 @@ export default {
   template: `
         <section class="email-details" v-if="email">
           <nav>
-              <RouterLink :to="'/email/' + email.prevEmailId">Previous Email</RouterLink> |
-              <RouterLink :to="'/email/' + email.nextEmailId">Next Email</RouterLink>
-              <hr />
-              <RouterLink to="/email">back to emails</RouterLink>
+            <RouterLink class="details-btn back-btn" to="/email/inbox"><i class="fa-solid fa-arrow-left"></i> Back</RouterLink>
           </nav>
-              <hr />
+          <h2>{{email.subject }}</h2>
+          <div class="main-content">
             <img src=".//assets/style/img/user-email-photo.png" alt="">
-            <small>{{email.from}}</small>
-            <h3>{{email.subject }}</h3>
-            <p>{{ email.body }}</p>
+            <h5>{{email.from}}</h5>
+            <h5>{{email.sentAt}}</h5>
+          </div>
+          <p>{{ email.body }}</p>
+          <div class="links flex align-center">
+            <RouterLink class="details-btn next-previous-btn" :to="'/email/' + email.prevEmailId">Previous Email</RouterLink> 
+            <RouterLink class="details-btn next-previous-btn" :to="'/email/' + email.nextEmailId">Next Email</RouterLink>
+          </div>
 
       </section>
         `,

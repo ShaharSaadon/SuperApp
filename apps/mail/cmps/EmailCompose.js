@@ -38,13 +38,14 @@ created() {},
     save() {
       this.email.sentAt = (new Date()).toDateString()
       eventBus.emit('sent', {...this.email})
-      this.$router.push('/email')
-      showSuccessMsg('email saved')
+      this.$router.push('/email/inbox')
+      showSuccessMsg('email sent')
     },
     saveToDraft() {
       this.email.sentAt = (new Date()).toDateString()
       this.email.isDraft = true
       eventBus.emit('sent', {...this.email})
+      this.$router.push('/email/inbox')
       showSuccessMsg('email saved to drafts')
 
     }

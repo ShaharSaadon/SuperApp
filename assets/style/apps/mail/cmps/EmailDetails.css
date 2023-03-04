@@ -1,0 +1,54 @@
+.email-details {
+    padding: 10px;
+    position: relative;
+    color: var(--clr4);
+}
+
+.email-details a {
+    padding: 20px;
+    width: 100px;
+    height: 60px;
+    /* display: inline-block; */
+    outline: 1px solid rgb(167, 167, 167);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.email-details h2 {
+    margin-block-start: 10px;
+}
+
+.email-details .main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
+    gap: 15px;
+    margin-block-start: 10px;
+}
+
+.email-details img {
+    border-radius: 50%;
+}
+
+.email-details p {
+    margin-block: 15px;
+    margin-block-end: 20px;
+}
+
+.back-btn i {
+    padding-inline-end: 10px;
+}
+
+.back-btn:hover {
+    background-color: rgb(212, 212, 212);
+}
+
+.next-previous-btn:hover {
+    background-color: rgb(212, 212, 212);
+}
+
+.email-details .links {
+    gap: 20px;
+}

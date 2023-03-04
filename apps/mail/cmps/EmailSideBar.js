@@ -8,7 +8,7 @@ export default {
              <section class="email-sideBar flex flex-column" :class="sideBarExtend">
 
                 <RouterLink class="email-compose-link flex justify-center align-center"
-                to="/email/compose"><i class="folder-icon fa-solid fa-pencil"></i><p class="text">Compose</p></RouterLink>
+                to="/email/inbox/compose"><i class="folder-icon fa-solid fa-pencil"></i><p class="text">Compose</p></RouterLink>
                 <EmailFolderList 
                 :emails="emails"
                 @filter="filterByFolders"/>

@@ -74,6 +74,7 @@ export default {
         changeFolder(folderName) {
             this.active = folderName
             this.criteria.status = folderName
+            this.$router.push('/email/inbox')
         },
     },
     watch: {

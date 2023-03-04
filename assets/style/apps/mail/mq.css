@@ -27,6 +27,12 @@
         top: 1px;
     }
 
+    .email-preview .email-date {
+        position: absolute;
+        top: 2px;
+        right: 5px;
+    }
+
     .email-sideBar {
         position: fixed;
         z-index: 10;
@@ -36,6 +42,12 @@
     .emails-list {
         margin-inline-start: 60px;
     }
+
+    .email-details {
+        padding-inline-start: 70px;
+    }
+
+    
 
 
 

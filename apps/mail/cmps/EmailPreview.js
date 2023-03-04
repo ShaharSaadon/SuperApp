@@ -3,7 +3,7 @@ export default {
   name: 'EmailPreview', 
   props: ['email'],
   template: `
-        <article :class="readClass" class="email-preview" @click="showDetails">
+        <article :class="readClass" class="email-preview" >
 
             <button :class="starClass" class="star-btn" @click.stop="toggleStar"><i class="fa-sharp fa-solid fa-star"></i></button>
            <!-- <div class="email-subjects"> -->
@@ -26,9 +26,9 @@ created() {},
     return {}
   },
   methods: {
-    showDetails(){
-        this.$router.push(`/email/${this.email.id}`)
-    },
+    // showDetails(){
+    //     this.$router.push(`/email/${this.email.id}`)
+    // },
     remove(email) {
         this.$emit('remove' , {...email})
     },

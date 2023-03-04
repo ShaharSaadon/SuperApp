@@ -12,17 +12,21 @@
 }
 
 .email-compose-link {
-    background-color: rgb(166, 213, 231);
+    background-color: #c2e7ff;
+
     width:var(--side-bar-small-width) ;
     height: 40px;
     padding-inline-start: 20px;
-    border-radius: 10px;
-    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    border-radius: 20px;
     margin-block-start: 5px;
     display: grid;
     grid-template-columns: 20px 1fr;
     gap: 20px;
     color: black;
+}
+
+.email-compose-link:hover {
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
 }
 
 .email-sideBar.extend .text {

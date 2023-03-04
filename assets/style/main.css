@@ -29,6 +29,7 @@
 @import 'apps/mail/cmps/EmailCompose.css';
 @import 'apps/mail/cmps/EmailSearchFilter.css';
 @import 'apps/mail/cmps/EmailFolderList.css';
+@import 'apps/mail/cmps/EmailDetails.css';
 
 
 /* NOTE */

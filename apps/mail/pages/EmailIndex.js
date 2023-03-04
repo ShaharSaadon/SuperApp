@@ -18,18 +18,19 @@ export default {
             @filter="setFilterBy"
             @toggleSideBar="toggleSideBar" />
           <!-- </div> -->
-          <RouterView @updateEmails="updateEmails"/>
-
+          
           <div class="flex">
             <EmailSideBar  
             :emails="emails"
             :isSideBarExtend="isSideBarExtend"
             @filter="setCriteria"/>
-            <EmailDetails/>
-              <EmailList 
+            <RouterView @updateEmails="updateEmails"  @remove="removeEmail"  @toggleStar="saveEmail" :emails="filteredEmails"/>
+              <!-- <EmailList 
+              v-if="!isDetails"
               :emails="filteredEmails"
+              @showDetails="showDetails"
               @remove="removeEmail"
-              @toggleStar="saveEmail"/>
+              @toggleStar="saveEmail"/> -->
 
           </div>
           
@@ -53,11 +54,18 @@ export default {
     return {
       emails: [],
       filterBy: {},
-      criteria: {},
-      isSideBarExtend: false
+      criteria: {
+        status: 'inbox',
+      },
+      isSideBarExtend: false,
+      isDetails:false
     }
   },
   methods: {
+    showDetails(emailId) {
+      this.isDetails = !this.isDetails
+      this.$router.push(`/email/${emailId}`)
+    },
     removeEmail(email) {
       console.log('email', email)
       if (!email.isTrash) {
@@ -85,6 +93,7 @@ export default {
         })
     },
     setFilterBy(filterBy) {
+      console.log(filterBy);
       this.filterBy = filterBy
     },
     setCriteria(criteria) {
@@ -118,34 +127,37 @@ export default {
     filteredEmails() {
       let emails = this.emails
       if (this.filterBy.isRead) {
-        emails = this.emails.filter(email => email.isRead !== this.filterBy.isRead)
+        console.log('hi');
+        emails = emails.filter(email => !email.isRead)
       }
 
       if (this.criteria.status) {
         if (this.criteria.status === 'inbox') {
-          emails = this.emails.filter(email => {
+          emails = emails.filter(email => {
             return email.to === emailService.loggedInUser.email &&
               !email.isTrash &&
               !email.isDraft
           })
         }
         if (this.criteria.status === 'sent') {
-          emails = this.emails.filter(email => email.from === emailService.loggedInUser.email)
+          emails = emails.filter(email => email.from === emailService.loggedInUser.email &&
+            !email.isTrash &&
+            !email.isDraft)
         }
         if (this.criteria.status === 'trash') {
-          emails = this.emails.filter(email => email.isTrash)
+          emails = emails.filter(email => email.isTrash)
         }
         if (this.criteria.status === 'draft') {
-          emails = this.emails.filter(email => email.isDraft)
+          emails = emails.filter(email => email.isDraft)
         }
         if (this.criteria.status === 'stared') {
-          emails = this.emails.filter(email => email.isStared)
+          emails = emails.filter(email => email.isStared)
         }
       }
 
       if (this.filterBy.subject) {
         const regex = new RegExp(this.filterBy.subject, 'i')
-        emails = this.emails.filter(email => regex.test(email.subject))
+        emails = emails.filter(email => regex.test(email.subject))
       }
       return emails
     }
