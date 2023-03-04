@@ -5,6 +5,7 @@ export default {
           <section class="search-emails-filter flex align-center justify-between ">
             <button @click="toggleSideBar" class="toggle-sideBar-btn flex align-center justify-center">☰</button>
           <img src="../../assets/style/img/email-logo.png" alt="">
+          <h2>Email</h2>
             <input 
                 v-model="filterBy.subject"
                 @input="filter"

@@ -5,6 +5,7 @@ import EmailCompose from "../cmps/EmailCompose.js"
 import EmailDetails from "../cmps/EmailDetails.js"
 import EmailSideBar from "../cmps/EmailSideBar.js"
 import { eventBus } from "../../../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
   name: 'EmailIndex',
@@ -61,12 +62,17 @@ export default {
       console.log('email', email)
       if (!email.isTrash) {
         email.isTrash = true
+        showSuccessMsg('email saved in trash')
         this.saveEmail(email)
       } else {
         emailService.remove(email.id)
           .then(() => {
             const idx = this.emails.findIndex(e => e.id === email.id)
             this.emails.splice(idx, 1)
+            showSuccessMsg('email removed')
+          })
+          .catch(err=> {
+            showErrorMsg('email didn\'t removed')
           })
       }
       // this.updateEmails()

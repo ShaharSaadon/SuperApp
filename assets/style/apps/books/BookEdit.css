@@ -1,0 +1,61 @@
+.book-edit {
+    margin: auto;
+    background-color: rgb(214, 214, 214);
+    height: 100vh;
+    font-size: 1.5em;
+    padding: 40px;
+    position: relative;
+}
+
+.book-edit input {
+    background-color: aliceblue;
+    padding: 8px;
+}
+
+.book-edit p {
+    padding-block: 10px;
+}
+
+.book-edit button {
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    /* margin-block-start: 10px; */
+    /* margin-inline-start: 50px; */
+    position: absolute;
+    top: 93px;
+    left: 16rem;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.book-edit button:hover {
+    background-color: rgb(70, 70, 70);
+    color: aliceblue;
+}
+
+.book-edit .return-link {
+    outline: 1px solid black;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.book-edit .return-link i {
+    padding-inline-end: 10px;
+}
+
+.book-edit .return-link:hover {
+    background-color: rgb(63, 63, 63);
+    color: white;
+}
+
+.book-edit h2 {
+    margin-block-start:20px ;
+    padding-block: 10px;
+}
+
+.book-edit textarea {
+    background-color: aliceblue;
+    outline: none;
+    border: none;
+}

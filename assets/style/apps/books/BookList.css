@@ -14,6 +14,78 @@
     min-height: 160px;
     border: 2px solid black;
     text-align: center;
+    position: relative;
+}
+
+.book-preview h3 {
+    height: 40px;
+}
+
+.book-list .edit-btn {
+    padding: 5px;
+    text-decoration: none;
+    font-size: 2em;
+    color: rgb(77, 70, 70);
+    border-radius: 10px;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.book-list .edit-btn:hover {
+    color: rgb(255, 252, 252);
+    background-color: rgba(175, 174, 174, 0.692);
+}
+
+.book-list .details-btn {
+    border: none;
+    background-color: inherit;
+    height: 2.5em;
+    font-size: 2em;
+    cursor: pointer;
+    letter-spacing: 3px;
+    color: rgb(87, 87, 87);
+    border-radius: 20px;
+    transition: 0.2s;
+    align-self: end;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-list .details-btn:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgba(139, 139, 139, 0.301);
+
+}
+
+.book-list .remove-btn {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 10px;
+    background-color: rgb(202, 17, 17);
+    color: white;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: none;
+}
+
+.book-list ul li:hover .remove-btn{ 
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-list .remove-btn:hover {
+    background-color: rgb(187, 73, 73);
+    color: white;
 }
 
 .book-list ul li img{

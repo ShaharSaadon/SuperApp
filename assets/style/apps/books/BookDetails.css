@@ -4,3 +4,69 @@
 .red{
     color:red
 }
+
+.book-details {
+    padding:40px;
+    margin-block-end: 90px;
+    position: relative;
+}
+
+.book-details h2 {
+    margin-block: 15px;
+}
+
+.book-details .description {
+    padding-block-end: 10px;
+}
+
+.book-details .description button {
+    border: none;
+    color: grey;
+}
+
+.book-details .description button:hover {
+    color: black;
+}
+
+.book-details img {
+    position: absolute;
+    bottom: 1em;
+    right: 5em;
+    max-height: 200px;
+    /* justify-self: end; */
+    border-radius: 10px;
+}
+
+.book-details h4 {
+    margin-block-end: 10px;
+}
+
+.book-details p {
+    margin-block-end: 10px;
+}
+
+.next-prev-book-link {
+    outline: 1px solid black;
+    padding: 10px;
+    display: inline-block;
+}
+
+.next-prev-book-link:hover {
+    background-color: rgb(63, 63, 63);
+    color: white;
+}
+
+.book-details .return-link {
+    outline: 1px solid black;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.book-details .return-link i {
+    padding-inline-end: 10px;
+}
+
+.book-details .return-link:hover {
+    background-color: rgb(63, 63, 63);
+    color: white;
+}

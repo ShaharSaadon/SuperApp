@@ -23,6 +23,15 @@
   opacity: 0.8;
 }
 
+.app-header .main-nav-btn {
+  font-size: 20px;
+}
+
+.app-header .main-nav-btn:hover {
+  color: gray;
+}
+
+
 .nav-bar .nav-route {
   text-decoration: none;
   display: flex;
@@ -33,7 +42,7 @@
 }
 
 .nav-bar .nav-route:hover {
-  color: rgb(20, 0, 0);
+  color: rgb(233, 233, 233);
   scale: 1.2;
 }
 

@@ -18,9 +18,9 @@ export default {
                 {
                     id: 'btn0',
                     title: 'All',
-                    type: '',
+                    type: 'All',
                     icons: ['fa-solid', 'fa-inbox'],
-                  
+
                 },
                 {
                     id: 'btn1',
@@ -59,7 +59,7 @@ export default {
                 },
 
             ],
-            active: 'inbox'
+            active: 'All'
         }
 
     },
@@ -69,9 +69,14 @@ export default {
                 extend: this.isSideBarExtend
             }
         }
-    },methods: {
-        setFilterBy(filterBy){
-        this.$emit('setFilterBy',filterBy)
+    }, 
+    methods: {
+        setFilterBy(filterBy) {
+            this.changeFolder(filterBy)
+            this.$emit('setFilterBy', filterBy)
+        },
+        changeFolder(folderName) {
+            this.active = folderName
         }
     },
 }

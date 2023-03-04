@@ -7,9 +7,9 @@ export default {
             <ul class="clean-list">
                 <li v-for="book in books" :key="book.id">
                     <BookPreview :book="book"/>
-                    <RouterLink :to="'/books/edit/' + book.id">Edit</RouterLink> |
-                    <RouterLink :to="'/books/' + book.id">Details</RouterLink> 
-                    <button @click="remove(book.id)">x</button>
+                    <RouterLink class="edit-btn" :to="'/books/edit/' + book.id">Edit</RouterLink> 
+                    <RouterLink class="details-btn" :to="'/books/' + book.id">Details</RouterLink> 
+                    <button class="remove-btn" @click="remove(book.id)">x</button>
         
 
                 </li>

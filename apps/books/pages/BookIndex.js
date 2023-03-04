@@ -7,8 +7,10 @@ import BookList from '../cmps/BookList.js'
 export default {
     template: `
         <section class="book-index">
-        <RouterLink :to="'/books/edit/'">Add Book Manually</RouterLink>
-        <RouterLink to="/add/" @add="onAddGoogleBook">Add Book from Google Books</RouterLink>
+            <div class="books-nav">
+                <RouterLink class="add-link" :to="'/books/edit/'">Add Book Manually</RouterLink>
+                <RouterLink class="add-link" to="/add/" @add="onAddGoogleBook">Add Book from Google Books</RouterLink>
+            </div>
 
             <BookFilter @filter="setFilterBy"/>
             <BookList :books="filteredBooks" 

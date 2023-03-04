@@ -49,6 +49,9 @@
 @import 'apps/books/BookList.css';
 @import 'apps/books/BookAdd.css';
 @import 'apps/books/BookDetails.css';
+@import 'apps/books/BookEdit.css';
+@import 'apps/books/BookIndex.css';
+@import 'apps/books/BookFilter.css';
 
 
 /* MQ */

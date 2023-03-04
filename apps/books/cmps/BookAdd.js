@@ -3,6 +3,7 @@ import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.servic
 
 export default {
     template: `
+    <router-link to="/books" class="return-link"><i class="fa-solid fa-book"></i>Return To Books List </router-link>
     <h2>Please search a Book</h2>
         <input type="text" placeholder="Search" name="search" v-model="keyWord" v-on:change="getGoogleBooks"/>
         

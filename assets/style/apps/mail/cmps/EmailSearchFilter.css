@@ -11,6 +11,10 @@
     height: 50px;
 }
 
+.search-emails-filter {
+    color: rgb(131, 131, 131) ;
+}
+
 .search-emails-filter [type="text"] {
     border: none;
     width: 70%;

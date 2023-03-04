@@ -1,5 +1,6 @@
 import { eventBus } from "../../../services/event-bus.service.js"
 import { emailService } from "../services/Email.service.js"
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
   name: 'EmailCompose', 
@@ -38,11 +39,14 @@ created() {},
       this.email.sentAt = (new Date()).toDateString()
       eventBus.emit('sent', {...this.email})
       this.$router.push('/email')
+      showSuccessMsg('email saved')
     },
     saveToDraft() {
       this.email.sentAt = (new Date()).toDateString()
       this.email.isDraft = true
       eventBus.emit('sent', {...this.email})
+      showSuccessMsg('email saved to drafts')
+
     }
   },
   computed: {},

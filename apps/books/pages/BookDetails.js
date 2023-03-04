@@ -1,24 +1,26 @@
 import { bookService } from "../services/book.services.js"
 import AddReview from "../cmps/AddReview.js"
+import LongTxt from "../../../cmps/LongTxt.js"
 
 export default {
     template: `
         <section class="book-details" v-if="book">
-        <p v-if="book.listPrice.isOnSale"> On Sale!</p>
+        <router-link to="/books" class="return-link"><i class="fa-solid fa-book"></i>Return To Books List </router-link>
+        <RouterLink class="next-prev-book-link" :to="'/books/' +book.prevBookId">Prev Book</RouterLink>
+        <RouterLink class="next-prev-book-link" :to="'/books/' +book.nextBookId">next Book</RouterLink>
             <h2>{{ book.title }}</h2>
             <h4>{{readingVibe}}</h4>
             <h4>.{{fashion}}</h4>
             <p>{{ book.subtitle }}</p>
+            <LongTxt class="description" :txt="book.description"/>
             <p>authors: {{ book.authors.join(' ') }}</p>
             <p>Published Date: {{ book.publishedDate}}</p>
-            <p>description: {{ book.description}}</p>
+            <p>description:</p>
             <p>categories: {{book.categories.join(',')}}</p>
             <p :class="counterClass">list Price: {{book.listPrice.amount}} {{book.listPrice.currencyCode}}</p>
-            <RouterLink :to="'/books/' +book.prevBookId">Prev Book</RouterLink>
             <img :src="book.thumbnail" alt="">
-            <RouterLink :to="'/books/' +book.nextBookId">next Book</RouterLink>
             <AddReview @add-review="onAddReview"/>
-            <RouterLink to="/books">Back to list</RouterLink>
+            <p v-if="book.listPrice.isOnSale"> On Sale!</p>
 
         </section>
     `,data(){
@@ -71,6 +73,7 @@ export default {
     },
      components: {
         AddReview,
+        LongTxt,
     }
     
 }

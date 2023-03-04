@@ -1,0 +1,16 @@
+.book-filter {
+    /* background-color: grey; */
+    outline: 1px solid black;
+    margin-inline: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-filter input {
+    padding: 8px;
+    background-color: rgb(185, 185, 185);
+    border-radius: 10px;
+    width: 30%;
+}
