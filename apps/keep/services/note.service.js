@@ -15,126 +15,302 @@ export const noteService = {
 
 const notesDB = [
     {
-        id: 'n100',
+        id: utilService.makeId(),
         createdAt: Date.now(),
         isPinned: true,
         type: 'NoteTxt',
         style: {
-            backgroundColor: '#404040'
+            backgroundColor: '#406057'
         },
         info: {
-            title: '11',
-            txt: 'hi',
-            labels: [],
-        }
-    },
-    {
-        id: 'n101',
-        createdAt: Date.now(),
-        isPinned: true,
-        type: 'NoteTxt',
-        style: {
-            backgroundColor: '#404040'
+            title: 'I Cant Think Any More!!!',
+            txt: 'i wish i were in Sinai right now',
+            labels: [{
+                "labelType": "Critical",
+                "style": {
+                    "backgroundColor": "rgb(224, 49, 49)"
+                }
+            },    {
+                "labelType": "Work",
+                "style": {
+                    "backgroundColor": "rgb(55, 178, 77)"
+                }
+            },
+            ],
         },
-        info: {
-            title: '22',
-            txt: 'bye',
-            labels: [],
-        }
+        lastEdit: 1677916966783,
+
     },
     {
-        id: 'n102',
-        createdAt: Date.now(),
-        isPinned: true,
-        type: 'NoteTxt',
-        style: {
-            backgroundColor: '#404040'
-        },
-        info: {
-            title: '33',
-            txt: 'good',
-            labels: [],
-        }
-    },
-    {
-        id: 'n104',
+        id: utilService.makeId(),
         createdAt: Date.now(),
         type: 'NoteImg',
-        isPinned: false,
+        isPinned: true,
         info: {
-            iUrl: 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-purim-clown-doll-mask-party-balloon-png-image_5330090.jpg',
-            title: 'PURIM',
-            txt: 'aa',
-            labels: [],
+            iUrl: 'https://lh3.googleusercontent.com/pw/AMWts8CWGMdKYE-8qj7EYsUQ1OzQ6cyqIBXvRAZ19CVDYYBPe4-XPSI6mze8oBzrw9uFxf43xukhYFEY71QPFaZqsxU7lE4MB5posBT-VfhDn7mI6akUyf9EjTOKitcLztKO8mtoxOmhnH3hz9Y0hIP1GV3x1Q=w698-h930-no?authuser=0',
+            title: 'Nicaragua',
+            txt: 'Cerro Negro',
+            labels: [    {
+                "labelType": "Memories",
+                "style": {
+                    "backgroundColor": "rgb(174, 62, 201)"
+                }
+            },
+        ],
         },
         style: {
-            backgroundColor: '#404040'
-        }
+            backgroundColor: '#FF922B'
+        },
+        lastEdit: 1677916966723,
+
     },
     {
-        id: 'n105',
+        id: utilService.makeId(),
         createdAt: Date.now(),
         type: 'NoteVideo',
-        isPinned: false,
+        isPinned: true,
         info: {
             vUrl: 'https://www.youtube.com/embed/7jfxcDudvS8',
             title: 'Burnning Man',
             txt: 'my dream',
-            labels: [],
+            labels: [    {
+                "labelType": "Friends",
+                "style": {
+                    "backgroundColor": "rgb(252, 196, 25)"
+                }
+            },],
         },
         style: {
-            backgroundColor: '#404040'
-        }
+            backgroundColor: '#E599F7'
+        },
+        lastEdit: 1677916946783,
+    },
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        type: 'NoteTodos',
+        isPinned: true,
+        info: {
+            title: 'Missions after the sprint',
+            todos: [
+                { txt: 'jump out of the window', doneAt: null },
+                { txt: 'go to a psychologist', doneAt: null },
+                { txt: 'Let the mind rest', doneAt: null },
+                { txt: 'stop crying', doneAt: null },
+                { txt: 'eat pizza', doneAt: 123465 },
+
+            ],
+            txt: '',
+            labels: [    {
+                "labelType": "Work",
+                "style": {
+                    "backgroundColor": "rgb(55, 178, 77)"
+                }
+            },
+            {
+                "labelType": "Critical",
+                "style": {
+                    "backgroundColor": "rgb(224, 49, 49)"
+                }
+            },
+        ],
+
+        },
+        style: {
+            backgroundColor: '#FCC419'
+        },
+        lastEdit: 1677916961743,
     },
     {
         id: 'n106',
         createdAt: Date.now(),
-        type: 'NoteTodos',
+        type: 'NoteAudio',
+        isPinned: true,
+        info: {
+            aUrl: 'http://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg',
+            title: 'Don\'t listen ever!!',
+            txt: 'hahahahahaha',
+            labels: [    {
+                "labelType": "Spam",
+                "style": {
+                    "backgroundColor": "rgb(247, 103, 7)"
+                }
+            },],
+
+        },
+        style: {
+            backgroundColor: '#404040'
+        },
+        lastEdit: 1677916966080,
+    },
+
+    // Second 
+
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        isPinned: false,
+        type: 'NoteTxt',
+        style: {
+            backgroundColor: '#FF922B'
+        },
+        info: {
+            title: 'i love purim',
+            txt: 'why do you love purim? i hate this',
+            labels: [    {
+                "labelType": "Spam",
+                "style": {
+                    "backgroundColor": "rgb(247, 103, 7)"
+                }
+            },],
+        },
+        lastEdit: 1677916566783,
+    },
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        type: 'NoteImg',
         isPinned: false,
         info: {
-            title: 'Get my stuff together',
+            iUrl: 'https://media.tenor.com/0FJSmSYDyKUAAAAM/onlyjoeyd-joeyd.gif',
+            txt: 'whats that?',
+            title: 'Whattttt?',
+            labels: [],
+        },
+        style: {
+            backgroundColor: '#40c057'
+        },
+        lastEdit: 1677916965783,
+    },
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        type: 'NoteImg',
+        isPinned: true,
+        info: {
+            iUrl: 'https://media.tenor.com/y2JXkY1pXkwAAAAC/cat-computer.gif',
+            txt: 'its not really me...',
+            title: 'me at saturday night',
+            labels: [    {
+                "labelType": "Coding",
+                "style": {
+                    "backgroundColor": "rgb(100, 220, 220)"
+                }
+            },],
+        },
+        style: {
+            backgroundColor: '#90d099'
+        },
+        lastEdit: 1677916966183,
+    },
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            iUrl: 'https://media.tenor.com/t3buP-QoO9oAAAAC/jim-carrey-work.gif',
+            txt: 'me at saturday night',
+            labels: [    {
+                "labelType": "Coding",
+                "style": {
+                    "backgroundColor": "rgb(100, 220, 220)"
+                }
+            },],
+        },
+        style: {
+            backgroundColor: '#90d099'
+        },
+        lastEdit: 1677916965783,
+    },
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        type: 'NoteVideo',
+        isPinned: true,
+        info: {
+            vUrl: 'https://www.youtube.com/embed/VvU27gvAK40',
+            title: 'Learn Code',
+            txt: 'i have nothing to write about it',
+            labels: [    {
+                "labelType": "Coding",
+                "style": {
+                    "backgroundColor": "rgb(100, 220, 220)"
+                }
+            },
+            {
+                "labelType": "Romantic",
+                "style": {
+                    "backgroundColor": "rgb(16, 152, 173)"
+                }
+            },],
+        },
+        style: {
+            backgroundColor: '#E599F7'
+        },
+        lastEdit: 1677916962283,
+    },
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        type: 'NoteTodos',
+        isPinned: true,
+        info: {
+            title: 'Food that i must eat ',
             todos: [
-                { txt: 'Driving license', doneAt: null },
-                { txt: 'Coding power', doneAt: 187111111 }
+                { txt: 'Shawarma Be Pita ', doneAt: null },
+                { txt: 'Hamburger', doneAt: null },
+                { txt: 'Banana', doneAt: null },
+                { txt: 'Corn', doneAt: null },
+                { txt: 'YES!', doneAt: 123465 },
+
             ],
             txt: '',
             labels: [],
 
         },
         style: {
-            backgroundColor: '#404040'
-        }
+            backgroundColor: '#FCC419'
+        },
+        lastEdit: 1677916966203,
     },
     {
-        id: 'n106',
+        id: utilService.makeId(),
         createdAt: Date.now(),
         type: 'NoteAudio',
-        isPinned: false,
+        isPinned: true,
         info: {
-            aUrl: '',
-            title: '',
-            txt: '',
+            aUrl: 'http://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3',
+            title: 'i should listen it when im sad',
+            txt: 'i miss home',
             labels: [],
 
         },
         style: {
             backgroundColor: '#404040'
-        }
+        },
+        lastEdit: 1677916266783,
+    },
+    {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        type: 'NoteAudio',
+        isPinned: true,
+        info: {
+            aUrl: 'http://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3',
+            title: 'holly shit',
+            txt: 'hey you know this mode that you have no control about what you writing ? just flow without thinking ?? ha ? me either...',
+            labels: [],
+
+        },
+        style: {
+            backgroundColor: '#404040'
+        },
+        lastEdit: 1677906966783,
     }
-   
-           
-        
-        
 
 
-    // {
-    //     type: 'NoteImg',
-    //     info: {
-    //         title: '1',
-    //         url: 'img/ing.jpg'
 
-    //     }
-    // },
 ]
 
 _createNotes()
@@ -184,7 +360,7 @@ function _createNote(type) {
             }
 
         case 'NoteVideo':
-           return {
+            return {
                 createdAt: Date.now(),
                 type,
                 isPinned: false,
@@ -200,7 +376,7 @@ function _createNote(type) {
             }
 
         case 'NoteImg':
-           return {
+            return {
                 createdAt: Date.now(),
                 type,
                 isPinned: false,
@@ -214,9 +390,9 @@ function _createNote(type) {
                     backgroundColor: '#404040'
                 }
             }
-            
+
         case 'NoteTodos':
-           return {
+            return {
                 createdAt: Date.now(),
                 type,
                 isPinned: false,
@@ -225,29 +401,29 @@ function _createNote(type) {
                     todos: [
                     ],
                     labels: [],
-                    txt: ''               
+                    txt: ''
                 },
                 style: {
                     backgroundColor: '#404040'
                 }
             }
-            case 'NoteAudio':
-                return {
-                     createdAt: Date.now(),
-                     type,
-                     isPinned: false,
-                     info: {
-                         aUrl: '',
-                         title: '',
-                         txt: '',
-                         labels: [],
-                     },
-                     style: {
-                         backgroundColor: '#404040'
-                     }
-                 }
+        case 'NoteAudio':
+            return {
+                createdAt: Date.now(),
+                type,
+                isPinned: false,
+                info: {
+                    aUrl: '',
+                    title: '',
+                    txt: '',
+                    labels: [],
+                },
+                style: {
+                    backgroundColor: '#404040'
+                }
+            }
 
-          
+
 
 
 

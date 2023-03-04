@@ -43,7 +43,7 @@ export default {
 
     <div class="notes-container">
         
-        <h4 v-if="pinnedNotes.length">pinned</h4>
+        <h4 v-if="pinnedNotes.length" class="note-mode">pinned</h4>
         
         <NoteList
             :notes="pinnedNotes"
@@ -53,7 +53,7 @@ export default {
             @duplicate="duplicateNote"
             @addLabel="addLabel"/>
 
-        <h4 class="others" v-if="unpinnedNotes.length">others</h4>
+        <h4 class="others" v-if="unpinnedNotes.length" class="note-mode">others</h4>
         
         <NoteList
         :notes="unpinnedNotes"

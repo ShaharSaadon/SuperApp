@@ -15,7 +15,8 @@
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid transparent;
-    width: 37.5rem; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+    width: 100vw; /* Could be more or less, depending on screen size */
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -25,11 +26,17 @@
   .modal-content textarea{
     border:none;
     overflow: hidden;
-
+    font-family: roboto;
   }
 
+ .modal-content .note-input-title{
+  font-size: 18px;
+  font-weight: 700;
+ }
+
   .modal-content .note-input-txt{
-    min-height: 4rem;
+    margin-block-start: var(--large-space);
+    min-height: 3rem;
   }
 
   .modal-content audio{

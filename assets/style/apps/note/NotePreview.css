@@ -13,9 +13,12 @@
 
 .note-preview{
     position: relative;
-
 }
 
+.note-preview h4{
+    margin-block-end: var(--large-space);
+    margin-block-start: var(--min-space);
+}
 .note-preview audio{
     width: 100%;
     margin-block-start: 1rem;
@@ -26,8 +29,14 @@ padding: var(--min-space) var(--med2-space) var(--min-space) var(--min-space);
 /* padding-inline-end: var(--med2-space); */
 font-size: 70%;
 position: relative;
+border-radius: 5px;
+border: .5px black solid;
+margin: .1rem;
 }
 
+.label-list{
+    flex-wrap: wrap;
+}
 .delete-label {
     position: absolute;
     left: 80%;

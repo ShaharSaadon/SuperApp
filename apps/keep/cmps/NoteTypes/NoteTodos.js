@@ -4,7 +4,7 @@ export default {
 
 <div class="note-content">
 
-<h3>{{info.title}}</h3>
+<h4>{{info.title}}</h4>
             <ul>
                 <li v-for="todo in active" @click="toggle($event,todo)">
                     {{todo.txt}}
@@ -12,12 +12,12 @@ export default {
             </ul>
 
             <ul>
-                <li v-for="todo in done" @click="toggle($event,todo)" class="doneTodos" class="note-label">
+                <li v-for="todo in done" @click="toggle($event,todo)" class="doneTodos">
                     {{todo.txt}}
                 </li>
             </ul>
 
-            <ul class="flex clean-list" >
+            <ul class="flex clean-list label-list" >
     <li v-for="label in info.labels" :style="label.style" class="note-label">
         <span  @mouseover="mouseOn=true" @mouseleave="mouseOn=false">{{label.labelType}}</span>
         

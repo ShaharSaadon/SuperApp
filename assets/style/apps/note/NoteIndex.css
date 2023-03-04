@@ -1,3 +1,8 @@
 .others{
     margin-block-start: 3rem;
 }
+
+.note-mode{
+    margin-block-start: var(--xLarge-space);
+    margin-block-end: var(--med2-space);
+}

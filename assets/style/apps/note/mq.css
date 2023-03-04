@@ -2,4 +2,11 @@
     .add-note {
         margin-inline-start: 15%;
     }
+
+    .note-header [type="text"] {
+        position: absolute;
+        right: 0;
+        width: 33%;
+        margin-inline-end: var(--med2-space);
+    }
 }

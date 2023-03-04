@@ -1,5 +1,11 @@
 import { noteService } from "../services/note.service.js"
 import EditNoteActions from "../cmps/EditNoteActions.js"
+import VideoEdit from "../cmps/NoteEdits/VideoEdit.js"
+import ImageEdit from "../cmps/NoteEdits/ImageEdit.js"
+import AudioEdit from "../cmps/NoteEdits/AudioEdit.js"
+import TodosEdit from "../cmps/NoteEdits/TodosEdit.js"
+import TitleEdit from "../cmps/NoteEdits/TitleEdit.js"
+import TxtEdit from "../cmps/NoteEdits/TxtEdit.js"
 
 
 export default {
@@ -7,36 +13,23 @@ export default {
 
     <section class="edit-note modal" v-bind:style="{ display: showModal ? 'block' : 'none' }">
             <div class="note-inputs modal-content" v-if="note" :style="note.style"  >
-            <textarea v-if="note" 
-                :style="note.style" 
-                @input="resize()" 
-                ref="textarea" 
-                class="note-input-title" 
-                v-model="note.info.title" 
-                placeholder="Title">
-            </textarea>
+
+            <!-- Title Edit -->
+         
                 
-            <iframe v-if="note.info.vUrl"
-                :src="note.info.vUrl" 
-                height="200" 
-                width="100%" 
-                title="Iframe Example">
-            </iframe>
+            <TitleEdit :info=note.info v-if="note" :style="note.style"/>
 
-            <img v-if="note.info.iUrl" :src="note.info.iUrl">
+            <VideoEdit :info=note.info v-if="note.info.vUrl"/>
 
-            <audio controls v-if="note.info.aUrl">
-            <source :src="note.info.aUrl" type="audio/mpeg">
-            </audio> 
+            <ImageEdit :info=note.info v-if="note.info.iUrl"/>
 
-        <textarea v-if="note" 
-            :style="note.style" 
-            @input="resize()" 
-            ref="textarea" 
-            class="note-input-txt" 
-            v-model="note.info.txt" 
-            placeholder="Take a note...">
-        </textarea> 
+            <AudioEdit :info=note.info v-if="note.info.aUrl"/>
+
+            <TxtEdit :info=note.info v-if="note" :style="note.style"/>
+
+
+
+    
 
         <p class="last-edit" :title="'Created At ' + new Date(note.createdAt)">{{lastEdit}}</p>
 
@@ -98,6 +91,12 @@ export default {
     },
     components: {
         EditNoteActions,
+        VideoEdit,
+        ImageEdit,
+        AudioEdit,
+        TodosEdit,
+        TitleEdit,
+        TxtEdit,
     },
     created() {
         const { noteId } = this.$route.params
