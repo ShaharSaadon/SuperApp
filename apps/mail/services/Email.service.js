@@ -270,6 +270,32 @@ function _createEmails() {
                 body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.',
                 subject: 'new games are coming!!!'           
              },
+                 {
+                id: utilService.makeId(),
+                to:loggedInUser.email,
+                from:'Github',
+                removedAt: null,
+                sentAt: (new Date()).toLocaleString('default', { month: 'short' }) + ' ' + ('' + new Date().getDate()).padStart(2,'0'),
+                isRead: false,
+                isStared: false,
+                isDraft:true,
+                isTrash:false,
+                body: 'If you were not expecting this invitation, you can ignore this email. If @ShaharSaadon is sending you too many emails, you can block them or report abuse.',
+                subject: 'ShaharSaadon invited you to'           
+             },
+                 {
+                id: utilService.makeId(),
+                to:loggedInUser.email,
+                from:'Teva',
+                removedAt: null,
+                sentAt: (new Date()).toLocaleString('default', { month: 'short' }) + ' ' + ('' + new Date().getDate()).padStart(2,'0'),
+                isRead: false,
+                isStared: false,
+                isDraft:true,
+                isTrash:false,
+                body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.',
+                subject: 'There are new inventions'           
+             },
         ]
         // emails.push(_createEmail(loggedInUser.email, 'epic games', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.', 'ofek@appsus.com'))
         // emails.push(_createEmail(loggedInUser.email, 'funny bunny', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, commodi? Saepe, quod nihil dicta vero alias unde dolorem odit, molestias quas doloremque sunt itaque autem consectetur incidunt qui assumenda et.', 'ofek@appsus.com'))

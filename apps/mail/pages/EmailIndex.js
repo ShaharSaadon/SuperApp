@@ -148,10 +148,10 @@ export default {
           emails = emails.filter(email => email.isTrash)
         }
         if (this.criteria.status === 'draft') {
-          emails = emails.filter(email => email.isDraft)
+          emails = emails.filter(email => email.isDraft && !email.isTrash)
         }
         if (this.criteria.status === 'stared') {
-          emails = emails.filter(email => email.isStared)
+          emails = emails.filter(email => email.isStared && !email.isTrash)
         }
       }
 
