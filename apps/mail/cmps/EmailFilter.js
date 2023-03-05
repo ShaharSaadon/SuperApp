@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     filter() {
-      this.filterBy.isRead = !this.filterBy.isRead
       console.log('this.filterBy', this.filterBy)
       this.$emit('filter', this.filterBy)
     },
