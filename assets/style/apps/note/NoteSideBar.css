@@ -6,7 +6,7 @@
     padding-inline: 5px;
     height: 100vh;
     border-inline-end: 1px solid var(--clr2);
-    background: var(--clr1);
+    background: inherit;
 
 ;
 }

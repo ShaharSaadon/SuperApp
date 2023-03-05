@@ -25,6 +25,29 @@
         position: absolute;
     }
 
-    i:hover{
+    i:hover {
         cursor: pointer;
+    }
+
+    .note-actions-edit {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btns-edit {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-close {
+        margin-block-start: var(--large-space);
+        width: 40%;
+        justify-self: center;
+        border-radius: 10px;
+        border: 1px dashed red;
+        height: 30px;
+    }
+
+    .close-area-btn {
+        display: grid;
     }

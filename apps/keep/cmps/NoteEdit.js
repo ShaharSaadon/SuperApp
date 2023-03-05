@@ -25,20 +25,29 @@ export default {
 
             <AudioEdit :info=note.info v-if="note.info.aUrl"/>
 
+            <TodosEdit :info="note.info" v-if="note.info.todos"/>
+
             <TxtEdit :info=note.info v-if="note" :style="note.style"/>
 
+            <p class="last-edit" :title="'Created At ' + new Date(note.createdAt)">{{lastEdit}}</p>
 
+            <ul class="flex clean-list label-list" >
+    <li v-for="label in note.info.labels" :style="label.style" class="note-label">
+        <span  @mouseover="mouseOn=true" @mouseleave="mouseOn=false">{{label.labelType}}</span>
+        <span class="delete-label" v-if="mouseOn" @click="deleteLabel">x</span>
+    </li>
+</ul>
 
     
 
-        <p class="last-edit" :title="'Created At ' + new Date(note.createdAt)">{{lastEdit}}</p>
 
                 <EditNoteActions 
                 v-if="note" 
                 :note="note" 
                 @saveNote="save"
                 @duplicateNote="duplicateNote"
-                @removeNote="removeNote"/>
+                @removeNote="removeNote"
+                @addLabel="addLabel"/>
             </div>
             </section>  
     `,
@@ -69,13 +78,17 @@ export default {
         removeNote(noteId) {
             this.$emit('remove', noteId)
         },
+        addLabel(note) {
+            this.$emit('addLabel', note)
+        },
+
 
     },
     computed: {
-        lastEdit() { 
-            if(!this.note.lastEdit) return
+        lastEdit() {
+            if (!this.note.lastEdit) return
             let date = new Date(this.note.lastEdit)
-            
+
             var fullYear = date.getFullYear()
             var month = date.getMonth() + 1
             var day = date.getDate()
@@ -84,7 +97,7 @@ export default {
             var minutes = date.getMinutes()
 
             var formattedTime = 'Last Edited: ' + day + '\/' + month + '\/' + fullYear
-            formattedTime += ' At: ' + hour + ':' + minutes
+            formattedTime += ' At: ' + hour + ':' + minutes + ((minutes % 10 === 0) ? '0' : '')
             return formattedTime
         }
 

@@ -29,8 +29,9 @@ export default {
 </div>
     `,
     data() {
-        return {  mouseOn: false,
-                }
+        return {
+            mouseOn: false,
+        }
     },
     computed: {
         active() {
@@ -50,13 +51,11 @@ export default {
             } else {
                 todo.doneAt = null
             }
-
+            this.onSave()
+        }, onSave() {
+            this.$emit('saveNote')
         },
     },
 
-    todos: [
-        { txt: 'Driving license', doneAt: null },
-        { txt: 'Coding power', doneAt: 187111111 }
-    ],
 }
 

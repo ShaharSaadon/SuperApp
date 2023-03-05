@@ -36,7 +36,8 @@ export default {
         <router-view 
             @save="saveNote" 
             @duplicate="duplicateNote"
-            @remove="removeNote" >
+            @remove="removeNote" 
+            @addLabel="addLabel">
         </router-view>
 
                             <!-- Edit Note End -->

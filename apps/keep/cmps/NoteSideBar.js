@@ -18,7 +18,7 @@ export default {
                 {
                     id: 'btn0',
                     title: 'All',
-                    type: 'All',
+                    type: '',
                     icons: ['fa-solid', 'fa-inbox'],
 
                 },

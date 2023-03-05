@@ -47,10 +47,20 @@
  .btn-close{
   border: none;
   margin: 0;
+  justify-content: center;
  }
 
  .last-edit{
   color:#fefefe;
-  margin-block-end: 0.7rem;
   font-size: 80%;
+  opacity: 0.6;
+  margin-block-end: var(--min-space);
  }
+
+ .note-actions-edit input[type="color"] {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  display: hidden;
+  position: absolute;
+}
