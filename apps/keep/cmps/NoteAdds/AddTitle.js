@@ -1,7 +1,7 @@
 export default {
     props: ['info'],
     template: `
-        <textarea @input="resize" 
+    <textarea 
                         ref="textarea" 
                         class="note-input-title" 
                         v-model="info.title" 

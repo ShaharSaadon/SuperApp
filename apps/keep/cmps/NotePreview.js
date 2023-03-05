@@ -6,6 +6,7 @@ import NoteTodos from "./NoteTypes/NoteTodos.js"
 import NoteAudio from "./NoteTypes/NoteAudio.js"
 
 export default {
+    name: 'NotePreview',
     props: ['note'],
     template: `
         <article class="note-preview" @mouseover="isHover=true" @mouseleave="isHover=false">

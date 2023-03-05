@@ -9,6 +9,7 @@ import TxtEdit from "../cmps/NoteEdits/TxtEdit.js"
 
 
 export default {
+    name: 'NoteEdit',
     template: `
 
     <section class="edit-note modal" v-bind:style="{ display: showModal ? 'block' : 'none' }">

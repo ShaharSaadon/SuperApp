@@ -1,6 +1,7 @@
 import { noteService } from "../services/note.service.js"
 
 export default {
+    name: 'LabelPicker',
     props: ['note'],
     template: `
 

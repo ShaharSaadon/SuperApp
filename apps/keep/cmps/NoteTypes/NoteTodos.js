@@ -18,10 +18,9 @@ export default {
             </ul>
 
             <ul class="flex clean-list label-list" >
-    <li v-for="label in info.labels" :style="label.style" class="note-label">
-        <span  @mouseover="mouseOn=true" @mouseleave="mouseOn=false">{{label.labelType}}</span>
-        
-        <span class="delete-label" v-if="mouseOn" @click="deleteLabel">x</span>
+            <li v-for="(label,idx) in info.labels" :style="label.style" class="note-label">
+        <span class="label-span">{{label.labelType}}</span>
+        <span class="delete-btn"  @click="deleteLabel(idx)">x</span>
     </li>
 </ul>
 

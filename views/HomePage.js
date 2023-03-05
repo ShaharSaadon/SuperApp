@@ -6,7 +6,7 @@ export default {
             <div class="home-nav">
                 <router-link to="/email/inbox" class="nav-route"><i class="fa-sharp fa-solid fa-envelope"></i>Email </router-link> 
                 <router-link to="/notes" class="nav-route"><i class="fa-solid fa-note-sticky"></i>Notes </router-link>
-                <router-link to="/books" class="nav-route"><i class="fa-solid fa-book"></i>Books </router-link>
+                <router-link to="/books" class="nav-route"><i class="fa-solid fa-book"></i>Boowks </router-link>
             </div>
             <div>
 </div>

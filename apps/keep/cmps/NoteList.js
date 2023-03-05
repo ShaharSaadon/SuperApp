@@ -1,6 +1,7 @@
 import NotePreview from './NotePreview.js'
 
 export default {
+    name: 'NoteList',
     props: ['notes'],
     template: `
         <section class="note-list">

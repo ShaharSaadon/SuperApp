@@ -23,7 +23,6 @@ export default {
                 <span>Keep</span>
                 </div>
                 <NoteFilter @filter="setFilterBy"/>
-                <span></span>
     </div>
 
         <NoteSideBar :isSideBarExtend="isSideBarExtend" @setFilterBy="setFilterByType"/>
@@ -145,7 +144,6 @@ export default {
         },
         filteredNotes() {
             if (!this.notes) return []
-            console.log(this.filterBy)
             if(!this.filterBy.type){
             return this.notes
             .filter(note=> note.info.txt.includes(this.filterBy.txt) || note.info.title.includes(this.filterBy.txt))
@@ -161,7 +159,6 @@ export default {
     created() {
         noteService.query()
             .then(notes => {
-                console.log(notes);
                 this.notes = notes
             })
 

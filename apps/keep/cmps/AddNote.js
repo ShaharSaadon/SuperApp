@@ -7,8 +7,9 @@ import AddTitle from '../cmps/NoteAdds/AddTitle.js'
 import AddTodosNote from '../cmps/NoteAdds/AddTodosNote.js'
 
 export default {
+    name: 'AddNote',
     template: `
-        <section class="add-note">
+<section class="add-note">
             
             <button @click="save" v-if="note.info.title">a</button>
 
@@ -36,7 +37,7 @@ export default {
                 <i class="fa-solid fa-list" @click="type='NoteTodos'"></i>
                 <i class="fa-solid fa-microphone" @click="type='NoteAudio'"></i>
             </div>
-
+</section>
     `,
     data() {
         return {
@@ -50,8 +51,6 @@ export default {
     methods: {
         loadNote() {
             this.note = noteService.getNewNote(this.type)
-            console.log('note changed!')
-            console.log(this.note)
         },
         save() {
             this.$emit('saveNote', this.note)

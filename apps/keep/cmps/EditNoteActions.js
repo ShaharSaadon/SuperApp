@@ -1,4 +1,5 @@
 export default {
+    name: 'EditNoteActions',
     props: ['note'],
     template: `
             <div class="note-actions-edit">
