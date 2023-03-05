@@ -30,7 +30,6 @@
     }
 
     .note-actions-edit {
-        /* margin-block-start: var(--xLarge-space); */
         display: flex;
         flex-direction: column;
     }

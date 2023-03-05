@@ -1,7 +1,9 @@
 export default {
 	template: `
         <header class="app-header">
-            <h1>SuperApp</h1>
+            <div class="logo">
+            <h1>SuperApp</h1> <img src="./assets/img/SupperApp.png" class="logo-img">
+            </div>
             <i class="main-nav-btn fa-solid fa-bars" @click="showHeader=!showHeader"></i>
             <nav class="nav-bar" v-if="showHeader" @click="showHeader=!showHeader">
                 <router-link to="/" class="nav-route"><i class="fa-sharp fa-solid fa-house"></i>Home</router-link> 
