@@ -1,6 +1,7 @@
 .note-side-bar {
     position: fixed;
     z-index: 10;
+    background-color: inherit;
     gap: 15px;
     padding-inline: 5px;
     height: 100vh;

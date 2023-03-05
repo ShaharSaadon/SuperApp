@@ -30,7 +30,6 @@ export default {
 
             <TxtEdit :info=note.info v-if="note" :style="note.style"/>
 
-            <p class="last-edit" :title="'Created At ' + new Date(note.createdAt)">{{lastEdit}}</p>
 
             <ul class="flex clean-list label-list" >
     <li v-for="label in note.info.labels" :style="label.style" class="note-label">
@@ -38,6 +37,8 @@ export default {
         <span class="delete-label" v-if="mouseOn" @click="deleteLabel">x</span>
     </li>
 </ul>
+
+<p class="last-edit" :title="'Created At ' + new Date(note.createdAt)">{{lastEdit}}</p>
 
     
 

@@ -19,7 +19,7 @@ export default {
     <div class="note-header flex align-center justify-between">
                 <button @click="toggleSideBar" class="toggle-sideBar-btn flex align-center justify-center">☰</button>
                 <div class="keep-logo">
-                <img src="../../assets/img/google-keep.png">
+                <img src="./assets/img/google-keep.png">
                 <span>Keep</span>
                 </div>
                 <NoteFilter @filter="setFilterBy"/>
@@ -87,10 +87,8 @@ export default {
                 })
         },
         saveNote(note) {
-            console.log('Sved!')
             noteService.save(note)
                 .then(savedNote => {
-                    console.log('savedNote=', savedNote)
                 })
                 .then(() => {
                     noteService.query()

@@ -51,10 +51,13 @@
  }
 
  .last-edit{
+
   color:#fefefe;
   font-size: 80%;
   opacity: 0.6;
   margin-block-end: var(--min-space);
+  margin-block-start: var(--xLarge-space);
+
  }
 
  .note-actions-edit input[type="color"] {
