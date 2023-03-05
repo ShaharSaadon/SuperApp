@@ -7,8 +7,9 @@ export default {
                 <label for="color-picker"><i class="fa-solid fa-palette" type="color"></i></label>
                 <i class="fa-solid fa-thumbtack" @click="pin"></i>
                 <i class="fa-solid fa-copy" @click="duplicateNote"></i>
-                <i class="fa-solid fa-trash-can" @click="removeNote"></i>
                 <i class="fa-solid fa-tag" @click="addLabel"></i>
+                <i class="fa-solid fa-trash-can" @click="removeNote"></i>
+
   
             </div> 
         
